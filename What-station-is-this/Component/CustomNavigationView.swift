@@ -3,7 +3,7 @@
 //  What-station-is-this
 //
 //  Created by 신희재 on 2021/03/15.
-//
+//// https://kavsoft.dev/SwiftUI_2.0/Navigation_SearchBar/
 
 import SwiftUI
 
@@ -53,7 +53,7 @@ struct CustomNavigationView: UIViewControllerRepresentable {
         searchController.searchBar.delegate = context.coordinator
         
         searchController.obscuresBackgroundDuringPresentation = false
-        controller.navigationBar.topItem?.hidesSearchBarWhenScrolling = false
+        controller.navigationBar.topItem?.hidesSearchBarWhenScrolling = true
         controller.navigationBar.topItem?.searchController = searchController
         
         return controller

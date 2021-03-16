@@ -3,12 +3,12 @@
 //  What-station-is-this
 //
 //  Created by 신희재 on 2021/03/14.
-//// https://kavsoft.dev/SwiftUI_2.0/Navigation_SearchBar/
+
 
 import SwiftUI
 
 struct SearchPageNavigatorView: View {
-    @State var stationItems: Array<StationItem> = testStations
+    @State var stationItems: Array<StationItem> = []
     
     var body: some View {
         // navigation view 설정
@@ -22,6 +22,13 @@ struct SearchPageNavigatorView: View {
         navBarAppearance.titleTextAttributes = [
             .foregroundColor: UIColor.black
         ]
+        
+        // 상단 서치바 세팅
+        navBarAppearance.barTintColor = .white
+        navBarAppearance.isTranslucent = false
+        navBarAppearance.shadowImage = UIImage()
+        navBarAppearance.setBackgroundImage(UIImage(), for: .default)
+        
         return CustomNavigationView(
             view: AnyView(
                 SearchPageView(stationItems: $stationItems)
@@ -30,30 +37,20 @@ struct SearchPageNavigatorView: View {
             largeTitle: true,
             title: "도착역 지정하기",
             onSearch: { (txt) in
+                if txt != "" {
+                    self.stationItems = testStations.filter{
+                        $0.name.lowercased().contains(txt.lowercased())
+                    }
+                }
+                else {
+                    self.stationItems = []
+                }
+                
             },
             onCancel: {
+                self.stationItems = []
             }
-        ).padding(.top, 0)
-    }
-}
-
-struct SearchPageNavigatorView2: View {
-    @State var stationItems: Array<StationItem> = testStations
-    
-    var body: some View {
-        // navigation view 설정
-        let navBarAppearance = UINavigationBar.appearance()
-
-        // 본문 타이틀 텍스트를 컬러
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.black
-        ]
-        // 헤더 타이틀 텍스트 컬러
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.black
-        ]
-        return SearchPageView(stationItems: $stationItems)
-        
+        ).ignoresSafeArea()
     }
 }
 
@@ -73,6 +70,5 @@ struct SearchPageView: View {
 struct SearchPageView_Previews: PreviewProvider {
     static var previews: some View {
         SearchPageNavigatorView()
-        SearchPageNavigatorView2()
     }
 }

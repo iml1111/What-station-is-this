@@ -21,17 +21,20 @@ struct ContentView: View {
         navBarAppearance.titleTextAttributes = [
             .foregroundColor: UIColor.white
         ]
+        // 두번째 화면에서 나타날 nav bar 헤더 투명화
+        navBarAppearance.shadowImage = UIImage()
+        navBarAppearance.setBackgroundImage(UIImage(), for: .default)
         
         return NavigationView {
                 ZStack {
                     Color.accentColor.edgesIgnoringSafeArea(.all)
                     VStack {
                         InfoText(msg: "도착역을 지정해주세요!")
-                        NavigationLink(destination: SearchPageNavigatorView()){
-                                SearchPageButton()
-                        }
-                        NavigationLink(destination: SearchPageNavigatorView2()){
-                                SearchPageButton()
+                        NavigationLink(
+                            destination: SearchPageNavigatorView()
+                                .navigationBarTitle("", displayMode: .inline)
+                        ){
+                            SearchPageButton()
                         }
                     }
                 }

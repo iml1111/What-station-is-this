@@ -97,6 +97,7 @@
 		A536B7D925FE39D800CF53F7 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				A59698CE25FF9C4600A1EAB9 /* CustomNavigationView.swift */,
 				A536B7DA25FE3A1400CF53F7 /* CustomButton.swift */,
 				A536B7DE25FE457F00CF53F7 /* CustomText.swift */,
 				A536B7EA25FE56C400CF53F7 /* CustomTextField.swift */,
@@ -110,7 +111,6 @@
 			children = (
 				A536B7C525FE385A00CF53F7 /* ContentView.swift */,
 				A536B7E625FE4CFE00CF53F7 /* SearchPageView.swift */,
-				A59698CE25FF9C4600A1EAB9 /* CustomNavigationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
