@@ -10,14 +10,14 @@ import SwiftUI
 struct SearchPageButton: View {
     
     var body: some View {
-        Text("검색하기")
-            .font(.system(size: 25))
-            .fontWeight(.bold)
-            .padding(.horizontal, 70.0)
-            .padding(.vertical, 15.0)
-            .background(Color.white)
-            .foregroundColor(.accentColor)
-            .cornerRadius(30)
+        HStack {
+            Text("도착역 예약하기")
+                .font(.system(size: 20))
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .foregroundColor(.white)
+            Image(systemName: "chevron.right")
+                .foregroundColor(.white)
+        }.padding()
     }
 }
 

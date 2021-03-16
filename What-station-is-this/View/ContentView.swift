@@ -4,6 +4,8 @@
 //
 //  Created by 신희재 on 2021/03/14.
 //
+// - 현재역 표시 버튼 -> 재수정 필요(리사이징, 디자인 배치 등)
+// - 서치 리스트에 밑줄 그어주기
 
 import SwiftUI
 
@@ -25,20 +27,26 @@ struct ContentView: View {
         navBarAppearance.shadowImage = UIImage()
         navBarAppearance.setBackgroundImage(UIImage(), for: .default)
         
-        return NavigationView {
-                ZStack {
-                    Color.accentColor.edgesIgnoringSafeArea(.all)
-                    VStack {
-                        InfoText(msg: "도착역을 지정해주세요!")
-                        NavigationLink(
-                            destination: SearchPageNavigatorView()
-                                .navigationBarTitle("", displayMode: .inline)
-                        ){
-                            SearchPageButton()
+        return GeometryReader { gm in
+            NavigationView {
+                    ZStack {
+                        Color.accentColor.edgesIgnoringSafeArea(.all)
+                        VStack {
+                            CurrentStationCard(station: kdStation)
+                            NavigationLink(
+                                destination: SearchPageNavigatorView()
+                                    .navigationBarTitle("", displayMode: .inline)
+                            ){
+                                HStack {
+                                    SearchPageButton()
+                                }
+                                
+                            }
+                            Spacer().frame(height: gm.size.height / 5)
                         }
                     }
+                    .navigationBarTitle("지금 무슨 역이지?")
                 }
-                .navigationBarTitle("지금 무슨 역이지?")
             }
         }
 }

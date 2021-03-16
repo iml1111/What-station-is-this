@@ -12,23 +12,31 @@ struct SearchCardView: View {
     let station: StationItem
     
     var body: some View {
-        HStack {
-            Text(station.name)
-                .font(.title2)
-                .bold()
-                .padding(.leading)
-            ForEach(station.lines, id: \.self) { line in
-                Image(line)
+        VStack {
+            HStack {
+                Text(station.name)
+                    .font(.title2)
+                    .foregroundColor(Color.black)
+                    .bold()
+                    .padding(.leading)
+                Spacer()
+                HStack() {
+                    ForEach(station.lines, id: \.self) { line in
+                        Image(line)
+                            .resizable()
+                            .frame(width: 20.0, height: 20.0)
+                    }
+                }.padding(.trailing)
             }
-            Spacer()
+            .padding(.vertical, 10)
         }
-        .padding(.vertical, 10)
+        
     }
 }
 
 
 struct SearchCardView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchPageNavigatorView()
+        SearchCardView(station: StationItem(name: "건대입구역", lines: ["2호선", "7호선"]))
     }
 }

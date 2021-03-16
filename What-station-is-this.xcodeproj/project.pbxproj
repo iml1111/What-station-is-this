@@ -15,12 +15,12 @@
 		A536B7CE25FE385A00CF53F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A536B7CD25FE385A00CF53F7 /* Preview Assets.xcassets */; };
 		A536B7D125FE385A00CF53F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A536B7CF25FE385A00CF53F7 /* LaunchScreen.storyboard */; };
 		A536B7DB25FE3A1400CF53F7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7DA25FE3A1400CF53F7 /* CustomButton.swift */; };
-		A536B7DF25FE457F00CF53F7 /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7DE25FE457F00CF53F7 /* CustomText.swift */; };
+		A536B7DF25FE457F00CF53F7 /* CurrentStationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7DE25FE457F00CF53F7 /* CurrentStationCard.swift */; };
 		A536B7E725FE4CFE00CF53F7 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7E625FE4CFE00CF53F7 /* SearchPageView.swift */; };
-		A536B7EB25FE56C400CF53F7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7EA25FE56C400CF53F7 /* CustomTextField.swift */; };
 		A59698C825FF862B00A1EAB9 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698C725FF862B00A1EAB9 /* SearchCardView.swift */; };
 		A59698CC25FF886200A1EAB9 /* StationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698CB25FF886200A1EAB9 /* StationItem.swift */; };
 		A59698CF25FF9C4600A1EAB9 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698CE25FF9C4600A1EAB9 /* CustomNavigationView.swift */; };
+		A59C2F6E2600E8DD00DB99B8 /* StationTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +34,12 @@
 		A536B7D025FE385A00CF53F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A536B7D225FE385A00CF53F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A536B7DA25FE3A1400CF53F7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		A536B7DE25FE457F00CF53F7 /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
+		A536B7DE25FE457F00CF53F7 /* CurrentStationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentStationCard.swift; sourceTree = "<group>"; };
 		A536B7E625FE4CFE00CF53F7 /* SearchPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageView.swift; sourceTree = "<group>"; };
-		A536B7EA25FE56C400CF53F7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		A59698C725FF862B00A1EAB9 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
 		A59698CB25FF886200A1EAB9 /* StationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationItem.swift; sourceTree = "<group>"; };
 		A59698CE25FF9C4600A1EAB9 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTrackingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +99,7 @@
 			children = (
 				A59698CE25FF9C4600A1EAB9 /* CustomNavigationView.swift */,
 				A536B7DA25FE3A1400CF53F7 /* CustomButton.swift */,
-				A536B7DE25FE457F00CF53F7 /* CustomText.swift */,
-				A536B7EA25FE56C400CF53F7 /* CustomTextField.swift */,
+				A536B7DE25FE457F00CF53F7 /* CurrentStationCard.swift */,
 				A59698C725FF862B00A1EAB9 /* SearchCardView.swift */,
 			);
 			path = Component;
@@ -111,6 +110,7 @@
 			children = (
 				A536B7C525FE385A00CF53F7 /* ContentView.swift */,
 				A536B7E625FE4CFE00CF53F7 /* SearchPageView.swift */,
+				A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,13 +194,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A536B7C925FE385A00CF53F7 /* What_station_is_this.xcdatamodeld in Sources */,
-				A536B7DF25FE457F00CF53F7 /* CustomText.swift in Sources */,
+				A536B7DF25FE457F00CF53F7 /* CurrentStationCard.swift in Sources */,
 				A59698CF25FF9C4600A1EAB9 /* CustomNavigationView.swift in Sources */,
 				A59698C825FF862B00A1EAB9 /* SearchCardView.swift in Sources */,
 				A536B7DB25FE3A1400CF53F7 /* CustomButton.swift in Sources */,
 				A536B7C225FE385A00CF53F7 /* AppDelegate.swift in Sources */,
 				A59698CC25FF886200A1EAB9 /* StationItem.swift in Sources */,
-				A536B7EB25FE56C400CF53F7 /* CustomTextField.swift in Sources */,
+				A59C2F6E2600E8DD00DB99B8 /* StationTrackingView.swift in Sources */,
 				A536B7C425FE385A00CF53F7 /* SceneDelegate.swift in Sources */,
 				A536B7E725FE4CFE00CF53F7 /* SearchPageView.swift in Sources */,
 				A536B7C625FE385A00CF53F7 /* ContentView.swift in Sources */,

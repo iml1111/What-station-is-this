@@ -35,7 +35,7 @@ struct SearchPageNavigatorView: View {
             ),
             placeHolder: "서울역",
             largeTitle: true,
-            title: "도착역 지정하기",
+            title: "도착역 예약하기",
             onSearch: { (txt) in
                 if txt != "" {
                     self.stationItems = testStations.filter{
@@ -48,7 +48,7 @@ struct SearchPageNavigatorView: View {
                 
             },
             onCancel: {
-                self.stationItems = []
+                self.stationItems = testStations
             }
         ).ignoresSafeArea()
     }
@@ -60,9 +60,16 @@ struct SearchPageView: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            ForEach(stationItems) { Station in
-                SearchCardView(station: Station)
-            }
+                ForEach(stationItems) { Station in
+                    NavigationLink(
+                        destination:
+                            StationTrackingView(
+                                stationItem: Station
+                            )
+                    ){
+                        SearchCardView(station: Station)
+                    }
+                }
         }
     }
 }

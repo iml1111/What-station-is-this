@@ -16,6 +16,9 @@ struct StationItem: Identifiable {
     var lines: Array<String>
 }
 
+var kdStation = StationItem(name: "건대입구역", lines: ["2호선", "7호선"])
+var longStation = StationItem(name: "건대입구역", lines: ["2호선", "7호선","2호선", "7호선","2호선", "7호선","2호선", "7호선"])
+
 var testStations = [
     StationItem(name: "건대입구역", lines: ["2호선", "7호선"]),
     StationItem(name: "어린이대공원역", lines: ["7호선"]),
