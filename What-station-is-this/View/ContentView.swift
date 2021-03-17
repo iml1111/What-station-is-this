@@ -6,6 +6,8 @@
 //
 // - 현재역 표시 버튼 -> 재수정 필요(리사이징, 디자인 배치 등)
 // - 서치 리스트에 밑줄 그어주기
+// - 다크모드 이슈 해결하기
+// - 트래킹 페이지 이미지
 
 import SwiftUI
 
@@ -18,8 +20,8 @@ struct ContentView: View {
         // 본문 타이틀 텍스트를 컬러
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.white
+            // 헤더 타이틀 텍스트 컬러
         ]
-        // 헤더 타이틀 텍스트 컬러
         navBarAppearance.titleTextAttributes = [
             .foregroundColor: UIColor.white
         ]
@@ -32,7 +34,7 @@ struct ContentView: View {
                     ZStack {
                         Color.accentColor.edgesIgnoringSafeArea(.all)
                         VStack {
-                            CurrentStationCard(station: kdStation)
+                            StationCard(station: testStartStation)
                             NavigationLink(
                                 destination: SearchPageNavigatorView()
                                     .navigationBarTitle("", displayMode: .inline)

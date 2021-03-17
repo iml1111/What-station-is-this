@@ -17,7 +17,10 @@ struct StationItem: Identifiable {
 }
 
 var kdStation = StationItem(name: "건대입구역", lines: ["2호선", "7호선"])
-var longStation = StationItem(name: "건대입구역", lines: ["2호선", "7호선","2호선", "7호선","2호선", "7호선","2호선", "7호선"])
+var longStation = StationItem(name: "건대입구역", lines: ["2호선", "7호선","2호선", "7호선","용인경전철", "인천2호선","2호선", "7호선", "2호선", "7호선","2호선", "7호선","2호선", "7호선","2호선"])
+var testStation = StationItem(name: "건대입구역", lines: ["용인경전철", "용인경전철", "용인경전철", "용인경전철"])
+
+var testStartStation = kdStation
 
 var testStations = [
     StationItem(name: "건대입구역", lines: ["2호선", "7호선"]),

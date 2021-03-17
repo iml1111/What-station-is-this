@@ -9,16 +9,23 @@ import SwiftUI
 
 struct StationTrackingView: View {
     
-    var stationItem: StationItem
+    var startStation: StationItem = testStartStation
+    var targetStation: StationItem
     
     var body: some View {
-        Text("This is " + stationItem.name)
+        VStack {
+            StationCard(station: targetStation)
+            StationCard(station: startStation)
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Text("끝내기")
+            })
+        }
     }
 }
 
 struct StationTrackingView_Previews: PreviewProvider {
     static var previews: some View {
         StationTrackingView(
-            stationItem: StationItem(name: "건대입구역", lines: ["2호선", "7호선"]))
+            targetStation: StationItem(name: "강남역", lines: ["2호선"]))
     }
 }

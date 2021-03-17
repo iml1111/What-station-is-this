@@ -46,6 +46,7 @@ struct CustomNavigationView: UIViewControllerRepresentable {
         controller.navigationBar.topItem?.title = title
         controller.navigationBar.prefersLargeTitles = largeTitle
         
+        
         // Search bar
         let searchController = UISearchController()
         searchController.searchBar.placeholder = placeHolder

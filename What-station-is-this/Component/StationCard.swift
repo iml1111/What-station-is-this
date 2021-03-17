@@ -7,17 +7,18 @@
 
 import SwiftUI
 
-struct CurrentStationCard: View {
+struct StationCard: View {
     
     var station: StationItem
     
     var body: some View {
         VStack {
-            HStack {
-                ForEach(station.lines, id: \.self) { line in
-                    Image(line)
-                        .resizable()
-                        .frame(width: 35.0, height: 35.0)
+            HStack(alignment: .center) {
+                ForEach(0..<self.station.lines.count) { idx in
+                    if idx < 2 {
+                        Image(self.station.lines[idx])
+                    }
+
                 }
             }
             Text(station.name)
@@ -25,19 +26,24 @@ struct CurrentStationCard: View {
                 .fontWeight(.bold)
                 .foregroundColor(.accentColor)
         }
-        .padding(20.0)
+        .frame(minWidth:210)
+        .padding(.horizontal, 20.0)
+        .padding(.vertical, 12.0)
         .background(Color.white)
         .cornerRadius(40)
+        .shadow(color: Color.gray, radius: 2, x: 0, y: 0)
+        
     }
 }
 
-struct TitleText_Previews: PreviewProvider {
+
+struct StationCard_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.accentColor.edgesIgnoringSafeArea(.all)
             VStack {
-                CurrentStationCard(station: longStation)
-                CurrentStationCard(station: kdStation)
+                StationCard(station: testStation)
+                StationCard(station: kdStation)
             }
            
         }

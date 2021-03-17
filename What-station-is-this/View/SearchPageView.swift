@@ -64,7 +64,7 @@ struct SearchPageView: View {
                     NavigationLink(
                         destination:
                             StationTrackingView(
-                                stationItem: Station
+                                targetStation: Station
                             )
                     ){
                         SearchCardView(station: Station)
