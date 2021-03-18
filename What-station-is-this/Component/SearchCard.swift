@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchCardView: View {
+struct SearchCard: View {
     
     let station: StationItem
     
@@ -16,7 +16,6 @@ struct SearchCardView: View {
             HStack {
                 Text(station.name)
                     .font(.title2)
-                    .foregroundColor(Color.black)
                     .bold()
                     .padding(.leading)
                 Spacer()
@@ -35,8 +34,8 @@ struct SearchCardView: View {
 }
 
 
-struct SearchCardView_Previews: PreviewProvider {
+struct SearchCard_Previews: PreviewProvider {
     static var previews: some View {
-        SearchCardView(station: StationItem(name: "건대입구역", lines: ["2호선", "7호선"]))
+        SearchCard(station: StationItem(name: "건대입구역", lines: ["2호선", "7호선"]))
     }
 }

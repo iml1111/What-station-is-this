@@ -9,23 +9,31 @@ import SwiftUI
 
 struct StationTrackingView: View {
     
-    var startStation: StationItem = testStartStation
-    var targetStation: StationItem
+    @State var startStation: StationItem = testStartStation
+    @State var targetStation: StationItem
     
     var body: some View {
         VStack {
-            StationCard(station: targetStation)
-            StationCard(station: startStation)
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                Text("끝내기")
-            })
+            StationBlackCard(station: targetStation)
+            Spacer().frame(height:50)
+            Arrows()
+            Spacer().frame(height:50)
+            StationBlackCard(station: startStation)
+//            Image(systemName: "tram.circle")
+//                .foregroundColor(.accentColor)
+//                .font(.system(size: 60))
+//                .rotationEffect(.degrees(rotation))
         }
+        .navigationTitle("도착역 예약 완료!")
     }
 }
 
+
 struct StationTrackingView_Previews: PreviewProvider {
     static var previews: some View {
-        StationTrackingView(
-            targetStation: StationItem(name: "강남역", lines: ["2호선"]))
+        NavigationView {
+            StationTrackingView(
+                targetStation: StationItem(name: "강남역", lines: ["2호선"]))
+        }
     }
 }

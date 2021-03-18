@@ -16,10 +16,11 @@
 		A536B7D125FE385A00CF53F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A536B7CF25FE385A00CF53F7 /* LaunchScreen.storyboard */; };
 		A536B7DB25FE3A1400CF53F7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7DA25FE3A1400CF53F7 /* CustomButton.swift */; };
 		A536B7DF25FE457F00CF53F7 /* StationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7DE25FE457F00CF53F7 /* StationCard.swift */; };
-		A536B7E725FE4CFE00CF53F7 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7E625FE4CFE00CF53F7 /* SearchPageView.swift */; };
-		A59698C825FF862B00A1EAB9 /* SearchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698C725FF862B00A1EAB9 /* SearchCardView.swift */; };
+		A56712BF2603538500667539 /* SelectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712BE2603538500667539 /* SelectPageView.swift */; };
+		A56712CA2603708300667539 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712C92603708300667539 /* SearchBar.swift */; };
+		A56712CE26038A4B00667539 /* Arrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712CD26038A4B00667539 /* Arrows.swift */; };
+		A59698C825FF862B00A1EAB9 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698C725FF862B00A1EAB9 /* SearchCard.swift */; };
 		A59698CC25FF886200A1EAB9 /* StationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698CB25FF886200A1EAB9 /* StationItem.swift */; };
-		A59698CF25FF9C4600A1EAB9 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698CE25FF9C4600A1EAB9 /* CustomNavigationView.swift */; };
 		A59C2F6E2600E8DD00DB99B8 /* StationTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */; };
 		A5A9504E2601CEFD007DFFD4 /* MultilineHstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9504D2601CEFD007DFFD4 /* MultilineHstack.swift */; };
 /* End PBXBuildFile section */
@@ -36,10 +37,11 @@
 		A536B7D225FE385A00CF53F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A536B7DA25FE3A1400CF53F7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		A536B7DE25FE457F00CF53F7 /* StationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCard.swift; sourceTree = "<group>"; };
-		A536B7E625FE4CFE00CF53F7 /* SearchPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageView.swift; sourceTree = "<group>"; };
-		A59698C725FF862B00A1EAB9 /* SearchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCardView.swift; sourceTree = "<group>"; };
+		A56712BE2603538500667539 /* SelectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPageView.swift; sourceTree = "<group>"; };
+		A56712C92603708300667539 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		A56712CD26038A4B00667539 /* Arrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrows.swift; sourceTree = "<group>"; };
+		A59698C725FF862B00A1EAB9 /* SearchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
 		A59698CB25FF886200A1EAB9 /* StationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationItem.swift; sourceTree = "<group>"; };
-		A59698CE25FF9C4600A1EAB9 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTrackingView.swift; sourceTree = "<group>"; };
 		A5A9504D2601CEFD007DFFD4 /* MultilineHstack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineHstack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,11 +101,12 @@
 		A536B7D925FE39D800CF53F7 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				A59698CE25FF9C4600A1EAB9 /* CustomNavigationView.swift */,
 				A536B7DA25FE3A1400CF53F7 /* CustomButton.swift */,
 				A536B7DE25FE457F00CF53F7 /* StationCard.swift */,
-				A59698C725FF862B00A1EAB9 /* SearchCardView.swift */,
+				A59698C725FF862B00A1EAB9 /* SearchCard.swift */,
 				A5A9504D2601CEFD007DFFD4 /* MultilineHstack.swift */,
+				A56712C92603708300667539 /* SearchBar.swift */,
+				A56712CD26038A4B00667539 /* Arrows.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -112,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				A536B7C525FE385A00CF53F7 /* ContentView.swift */,
-				A536B7E625FE4CFE00CF53F7 /* SearchPageView.swift */,
+				A56712BE2603538500667539 /* SelectPageView.swift */,
 				A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */,
 			);
 			path = View;
@@ -198,15 +201,16 @@
 			files = (
 				A536B7C925FE385A00CF53F7 /* What_station_is_this.xcdatamodeld in Sources */,
 				A536B7DF25FE457F00CF53F7 /* StationCard.swift in Sources */,
-				A59698CF25FF9C4600A1EAB9 /* CustomNavigationView.swift in Sources */,
-				A59698C825FF862B00A1EAB9 /* SearchCardView.swift in Sources */,
+				A59698C825FF862B00A1EAB9 /* SearchCard.swift in Sources */,
+				A56712BF2603538500667539 /* SelectPageView.swift in Sources */,
 				A536B7DB25FE3A1400CF53F7 /* CustomButton.swift in Sources */,
+				A56712CA2603708300667539 /* SearchBar.swift in Sources */,
 				A5A9504E2601CEFD007DFFD4 /* MultilineHstack.swift in Sources */,
+				A56712CE26038A4B00667539 /* Arrows.swift in Sources */,
 				A536B7C225FE385A00CF53F7 /* AppDelegate.swift in Sources */,
 				A59698CC25FF886200A1EAB9 /* StationItem.swift in Sources */,
 				A59C2F6E2600E8DD00DB99B8 /* StationTrackingView.swift in Sources */,
 				A536B7C425FE385A00CF53F7 /* SceneDelegate.swift in Sources */,
-				A536B7E725FE4CFE00CF53F7 /* SearchPageView.swift in Sources */,
 				A536B7C625FE385A00CF53F7 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
