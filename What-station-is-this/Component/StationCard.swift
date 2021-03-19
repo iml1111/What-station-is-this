@@ -31,7 +31,6 @@ struct StationCard: View {
         .padding(.vertical, 12.0)
         .background(Color.white)
         .cornerRadius(40)
-        .shadow(color: Color.gray, radius: 2, x: 0, y: 0)
         
     }
 }

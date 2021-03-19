@@ -13,18 +13,24 @@ struct StationTrackingView: View {
     @State var targetStation: StationItem
     
     var body: some View {
-        VStack {
-            StationBlackCard(station: targetStation)
-            Spacer().frame(height:50)
-            Arrows()
-            Spacer().frame(height:50)
-            StationBlackCard(station: startStation)
-//            Image(systemName: "tram.circle")
-//                .foregroundColor(.accentColor)
-//                .font(.system(size: 60))
-//                .rotationEffect(.degrees(rotation))
-        }
-        .navigationTitle("도착역 예약 완료!")
+        return
+            VStack {
+                HStack {
+                    Text("가까워지면 알림을 보내드릴게요!")
+                        .font(.title3)
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.top, 5)
+                Spacer()
+                VStack(spacing: 30) {
+                    StationBlackCard(station: targetStation)
+                    Arrows()
+                    StationBlackCard(station: startStation)
+                }
+                Spacer()
+            }
+        .navigationTitle("도착역 예약 완료")
     }
 }
 

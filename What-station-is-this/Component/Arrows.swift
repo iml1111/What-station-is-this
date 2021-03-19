@@ -21,7 +21,7 @@ struct ArrowShape : Shape {
 }
 
 struct Arrows: View {
-    private let arrowCount = 4
+    private let arrowCount = 3
 
     let timer = Timer.publish(
         every: 1.3, on: .main, in: .common).autoconnect()
