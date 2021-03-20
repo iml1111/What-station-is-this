@@ -16,8 +16,7 @@ struct ContentView: View {
     @StateObject var delegate = NotificationDelegate()
     
     var body: some View {
-        
-        return GeometryReader { gm in
+        GeometryReader { gm in
             NavigationView {
                 ZStack {
                     Color.accentColor.edgesIgnoringSafeArea(.all)
