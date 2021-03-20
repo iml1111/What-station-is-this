@@ -29,8 +29,32 @@ struct StationTrackingView: View {
                     StationBlackCard(station: startStation)
                 }
                 Spacer()
+                VStack {
+                    Button(
+                        action: {
+                            self.createNotification()
+                        },
+                        label: {
+                        Text("알림 보내기")
+                    })
+                }
             }
         .navigationTitle("도착역 예약 완료")
+    }
+    
+    func createNotification(){
+        let content = UNMutableNotificationContent()
+        content.title = "도착역에 가까워졌어요!"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: 0.1, repeats: false)
+        let request = UNNotificationRequest(
+            identifier: "IN-APP",
+            content: content,
+            trigger: trigger
+        )
+        UNUserNotificationCenter.current()
+            .add(request, withCompletionHandler: nil)
     }
 }
 

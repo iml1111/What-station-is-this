@@ -19,6 +19,7 @@
 		A56712BF2603538500667539 /* SelectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712BE2603538500667539 /* SelectPageView.swift */; };
 		A56712CA2603708300667539 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712C92603708300667539 /* SearchBar.swift */; };
 		A56712CE26038A4B00667539 /* Arrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712CD26038A4B00667539 /* Arrows.swift */; };
+		A5747B6D2605D2C1002DDA86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5747B6F2605D2C1002DDA86 /* InfoPlist.strings */; };
 		A59698C825FF862B00A1EAB9 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698C725FF862B00A1EAB9 /* SearchCard.swift */; };
 		A59698CC25FF886200A1EAB9 /* StationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698CB25FF886200A1EAB9 /* StationItem.swift */; };
 		A59C2F6E2600E8DD00DB99B8 /* StationTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */; };
@@ -34,12 +35,13 @@
 		A536B7CA25FE385A00CF53F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A536B7CD25FE385A00CF53F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A536B7D025FE385A00CF53F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A536B7D225FE385A00CF53F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A536B7DA25FE3A1400CF53F7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		A536B7DE25FE457F00CF53F7 /* StationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCard.swift; sourceTree = "<group>"; };
 		A56712BE2603538500667539 /* SelectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPageView.swift; sourceTree = "<group>"; };
 		A56712C92603708300667539 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		A56712CD26038A4B00667539 /* Arrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrows.swift; sourceTree = "<group>"; };
+		A5747B682605D274002DDA86 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A5747B6E2605D2C1002DDA86 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A59698C725FF862B00A1EAB9 /* SearchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
 		A59698CB25FF886200A1EAB9 /* StationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationItem.swift; sourceTree = "<group>"; };
 		A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTrackingView.swift; sourceTree = "<group>"; };
@@ -83,9 +85,9 @@
 				A536B7C325FE385A00CF53F7 /* SceneDelegate.swift */,
 				A536B7CA25FE385A00CF53F7 /* Assets.xcassets */,
 				A536B7CF25FE385A00CF53F7 /* LaunchScreen.storyboard */,
-				A536B7D225FE385A00CF53F7 /* Info.plist */,
 				A536B7C725FE385A00CF53F7 /* What_station_is_this.xcdatamodeld */,
 				A536B7CC25FE385A00CF53F7 /* Preview Content */,
+				A5747B6F2605D2C1002DDA86 /* InfoPlist.strings */,
 			);
 			path = "What-station-is-this";
 			sourceTree = "<group>";
@@ -170,6 +172,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = A536B7B525FE385A00CF53F7;
 			productRefGroup = A536B7BF25FE385A00CF53F7 /* Products */;
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A536B7D125FE385A00CF53F7 /* LaunchScreen.storyboard in Resources */,
+				A5747B6D2605D2C1002DDA86 /* InfoPlist.strings in Resources */,
 				A536B7CE25FE385A00CF53F7 /* Preview Assets.xcassets in Resources */,
 				A536B7CB25FE385A00CF53F7 /* Assets.xcassets in Resources */,
 			);
@@ -222,8 +226,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				A536B7D025FE385A00CF53F7 /* Base */,
+				A5747B682605D274002DDA86 /* ko */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A5747B6F2605D2C1002DDA86 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5747B6E2605D2C1002DDA86 /* ko */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -233,6 +246,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -284,6 +298,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "What-station-is-this";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -294,6 +309,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -338,6 +354,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "What-station-is-this";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -360,7 +377,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iml.What-station-is-this";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "What-station-is-this";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -381,7 +398,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.iml.What-station-is-this";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "What-station-is-this";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -13,7 +13,7 @@ import UserNotifications
 
 struct ContentView: View {
     
-    let userNoficationCenter = UNUserNotificationCenter.current()
+    @StateObject var delegate = NotificationDelegate()
     
     var body: some View {
         
@@ -38,72 +38,33 @@ struct ContentView: View {
                             }
                         }
                         Spacer()
-                        VStack {
-                            Button(
-                                action: {
-                                    self.requestNotificationPermission()
-                                },
-                                label: {
-                                Text("알림 퍼미션 요청")
-                                    .foregroundColor(.white)
-                            })
-                                .padding()
-                            Button(
-                                action: {
-                                    self.sendNotification()
-                                },
-                                label: {
-                                Text("알림 보내기")
-                                    .foregroundColor(.white)
-                            })
-                        }
                     }
                 }
                 .navigationBarHidden(true)
             }
         }.onAppear {
-            print("뷰가 생성됨")
+            UNUserNotificationCenter.current()
+                .requestAuthorization(
+                    options: [.alert, .badge, .sound]) { success, error in
+    //                    if success {
+    //                    } else if let error = error {
+    //                        print(error.localizedDescription)
+    //                    }
+                    }
+            UNUserNotificationCenter.current().delegate = delegate
+            print("notice perm OK.")
         }
     }
+}
+
+// 알림 delegate ?? -> 이걸 안하면 알림이 안옴
+class NotificationDelegate:
+    NSObject, ObservableObject, UNUserNotificationCenterDelegate {
     
-    func requestNotificationPermission() {
-        userNoficationCenter
-            .requestAuthorization(
-                options: [.alert, .badge, .sound]) { success, error in
-                    if success {
-                        print("알림 퍼미션 확인 완료")
-                    } else if let error = error {
-                        print(error.localizedDescription)
-                    }
-                }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.badge, .banner, .sound])
     }
-    
-    func sendNotification() {
-        print("알림 전송됨 start")
-        let content = UNMutableNotificationContent()
-        content.title = "Feed the cat"
-        content.subtitle = "It looks hungry"
-        content.body = "이것은 알림을 테스트 하는 것이다"
-        content.sound = UNNotificationSound.default
-
-        // show this notification five seconds from now
-        let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: 5, repeats: false)
-
-        // choose a random identifier
-        let request = UNNotificationRequest(
-            identifier: UUID().uuidString,
-            content: content, trigger: trigger)
-
-        // add our notification request
-        userNoficationCenter.add(request) { error in
-                if let error = error {
-                    print("Notification Error: ", error)
-                }
-            }
-        print("알림 전송됨 end")
-    }
-    
 }
 
 
