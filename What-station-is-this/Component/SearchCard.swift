@@ -20,10 +20,11 @@ struct SearchCard: View {
                     .padding(.leading)
                 Spacer()
                 HStack() {
-                    ForEach(station.lines, id: \.self) { line in
-                        Image(line)
-                            .resizable()
-                            .frame(width: 20.0, height: 20.0)
+                    ForEach(0..<self.station.lines.count) { idx in
+                        if idx < 3 {
+                            Image(self.station.lines[idx])
+                        }
+
                     }
                 }.padding(.trailing)
             }
@@ -36,6 +37,6 @@ struct SearchCard: View {
 
 struct SearchCard_Previews: PreviewProvider {
     static var previews: some View {
-        SearchCard(station: StationItem(name: "건대입구역", lines: ["2호선", "7호선"]))
+        SearchCard(station: StationItem(name: "남영", lines: ["인천선", "신분당선"], lat: 37.541021, lng: 126.9713))
     }
 }

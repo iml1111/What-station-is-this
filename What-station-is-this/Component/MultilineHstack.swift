@@ -85,7 +85,7 @@ struct MultilineHstack_Previews: PreviewProvider {
         ZStack {
             Color.accentColor.edgesIgnoringSafeArea(.all)
             VStack {
-                StationCard(station: longStation)
+                StationCard(station: testStation)
                 StationCard(station: kdStation)
             }
            

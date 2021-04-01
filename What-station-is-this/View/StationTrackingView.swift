@@ -63,7 +63,7 @@ struct StationTrackingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             StationTrackingView(
-                targetStation: StationItem(name: "강남역", lines: ["2호선"]))
+                targetStation: StationItem(name: "남영", lines: ["01호선"], lat: 37.541021, lng: 126.9713))
         }
     }
 }
