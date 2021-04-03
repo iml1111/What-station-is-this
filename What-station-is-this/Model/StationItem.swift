@@ -24,7 +24,6 @@ struct StationItem: Identifiable {
 var kdStation = StationItem(name: "건대입구", lines: ["02호선", "07호선"], lat: 37.540693, lng: 127.07023)
 var testStation = StationItem(name: "건대입구", lines: ["용인경전철", "용인경전철", "용인경전철", "용인경전철"], lat: 37.540693, lng: 127.07023)
 
-var testStartStation = kdStation
 
 var startStation = StationItem(name: "현재 역은...", lines: [], lat: 0.0, lng: 0.0)
 var unknownStation = StationItem(name: "알 수 없음", lines: [], lat: 0.0, lng: 0.0)

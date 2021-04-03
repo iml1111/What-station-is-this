@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StationTrackingView: View {
     
-    @State var startStation: StationItem = testStartStation
+    @State var startStation: StationItem = kdStation
     @State var targetStation: StationItem
     
     var body: some View {
