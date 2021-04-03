@@ -11,14 +11,16 @@ import SwiftUI
 import UserNotifications
 import CoreLocation
 import MapKit
+import ExytePopupView
 
 
 struct ContentView: View {
     
     @StateObject var notificationDelegate = NotificationDelegate()
-    @StateObject var locationFetcher = LocationFetcher()
+    @EnvironmentObject var locationFetcher: LocationFetcher
     @State var currentStationItem = startStation
     
+    @State var showingPopup = false
     
     // 앱 실행 초기 위치 추적기 실행 타이머
     var firstTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -44,7 +46,8 @@ struct ContentView: View {
                             VStack {
                                 Button(
                                     action: {
-                                        self.refeshCurrentStation()
+                                        self.currentStationItem = self.locationFetcher.lastKnownStation
+                                        self.showingPopup = true
                                     },
                                     label: {
                                         StationCard(station: $currentStationItem)
@@ -66,13 +69,13 @@ struct ContentView: View {
                             EtcLabel(string: "알 수 없는 에러 발생!")
                         }
                         
-                        
                         Spacer()
+                        // 디버깅용 버튼
                         Button(
                             action: {
                                 self.locationFetcher.start()
                                 if let location = self.locationFetcher.lastKnownLocation {
-                                    let CurrentStationItem: StationItem = getCurrentStationItem(location: location)
+                                    let CurrentStationItem = self.locationFetcher.lastKnownStation
                                     self.createNotification(location: location, stationName: CurrentStationItem.name)
                                 } else {
                                     self.createNotification2()
@@ -85,6 +88,16 @@ struct ContentView: View {
                     }
                 }
                 .navigationBarHidden(true)
+                .popup(
+                    isPresented: $showingPopup,
+                    type: .default,
+                    position: .top,
+                    animation: .spring(),
+                    autohideIn: 1.7,
+                    closeOnTap: true,
+                    closeOnTapOutside: true) {
+                    WhiteTopToastMessage(string: "현재 역 갱신 완료!")
+                }
             }
         }.onAppear {
             // Notification Delegate 적용
@@ -105,7 +118,7 @@ struct ContentView: View {
                 self.locationFetcher.authorizationStatus != .notDetermined
                     && self.locationFetcher.authorizationStatus != .denied
             ) {
-                self.refeshCurrentStation()
+                self.currentStationItem = self.locationFetcher.lastKnownStation
                 if (
                     self.currentStationItem.name != unknownStation.name
                     || self.firstTimerCount > 10
@@ -115,14 +128,6 @@ struct ContentView: View {
                 }
                 self.firstTimerCount += 1
             }
-        }
-    }
-    
-    func refeshCurrentStation(){
-        if let location = self.locationFetcher.lastKnownLocation {
-            self.currentStationItem = getCurrentStationItem(location: location)
-        } else {
-            self.currentStationItem = unknownStation
         }
     }
     

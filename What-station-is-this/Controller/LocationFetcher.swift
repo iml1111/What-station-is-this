@@ -14,6 +14,8 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var authorizationStatus: CLAuthorizationStatus
     let manager = CLLocationManager()
     var lastKnownLocation: CLLocationCoordinate2D?
+    @Published var lastKnownStation: StationItem = unknownStation
+    var targetStation: StationItem = unknownStation
     
     override init() {
         authorizationStatus = manager.authorizationStatus
@@ -28,6 +30,7 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lastKnownLocation = locations.first?.coordinate
+        lastKnownStation = getCurrentStationItem(location: lastKnownLocation!)
     }
     
     func requestPermission() {
@@ -36,5 +39,9 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorizationStatus = manager.authorizationStatus
+    }
+    
+    func setTargetStation(station: StationItem){
+        targetStation = station
     }
 }

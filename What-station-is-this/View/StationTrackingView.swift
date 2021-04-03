@@ -9,7 +9,8 @@ import SwiftUI
 
 struct StationTrackingView: View {
     
-    @State var startStation: StationItem = kdStation
+    @EnvironmentObject var locationFetcher: LocationFetcher
+    @State var currentStation: StationItem = startStation
     @State var targetStation: StationItem
     
     var body: some View {
@@ -26,20 +27,22 @@ struct StationTrackingView: View {
                 VStack(spacing: 30) {
                     StationBlackCard(station: targetStation)
                     Arrows()
-                    StationBlackCard(station: startStation)
+                    StationBlackBindingCard(station: $currentStation)
                 }
                 Spacer()
+                // 디버깅용 버튼
                 VStack {
                     Button(
-                        action: {
-                            self.createNotification()
-                        },
-                        label: {
-                        Text("알림 보내기")
-                    })
+                        action: {self.createNotification()},
+                        label: {Text("알림 보내기")}
+                    )
                 }
             }
         .navigationTitle("도착역 예약 완료")
+            .onAppear {
+                self.currentStation = self.locationFetcher.lastKnownStation
+                self.locationFetcher.setTargetStation(station: self.targetStation)
+            }
     }
     
     func createNotification(){
