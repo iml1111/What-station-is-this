@@ -11,7 +11,7 @@ struct SelectPageView: View {
     
     @State var searchText: String = ""
     @State var showCancelButton: Bool = false
-    @State var stationItems: Array<StationItem> = allStations
+    @State var stationItems: Array<StationItem> = Array(capitalStations.values)
     
     var body: some View {
         

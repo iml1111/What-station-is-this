@@ -17,13 +17,12 @@ func getDistance(location: CLLocationCoordinate2D, station: StationItem) -> Doub
 }
 
 func getCurrentStationItem(location: CLLocationCoordinate2D) -> StationItem {
-    var currentStationItem: StationItem = allStations[0]
+    var currentStationItem: StationItem = unknownStation
     var minDistance: Double = getDistance(location: location, station: currentStationItem)
-    
-    for i in 1..<allStations.count {
-        let curDistance = getDistance(location: location, station: allStations[i])
+    for (_, value) in capitalStations {
+        let curDistance = getDistance(location: location, station: value)
         if curDistance < minDistance {
-            currentStationItem = allStations[i]
+            currentStationItem = value
             minDistance = curDistance
         }
     }

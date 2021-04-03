@@ -110,9 +110,9 @@ struct ContentView: View {
                         }
                     }
             UNUserNotificationCenter.current().delegate = notificationDelegate
-            
             // Location Delegate 적용 및 현재 위치 추적
             self.locationFetcher.start()
+            
         }.onReceive(firstTimer) { _ in
             if (
                 self.locationFetcher.authorizationStatus != .notDetermined
