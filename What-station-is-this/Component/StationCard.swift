@@ -9,16 +9,15 @@ import SwiftUI
 
 struct StationCard: View {
     
-    var station: StationItem
+    @Binding var station: StationItem
     
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                ForEach(0..<self.station.lines.count) { idx in
+                ForEach(0..<self.station.lines.count, id: \.self) { idx in
                     if idx < 2 {
                         Image(self.station.lines[idx])
                     }
-
                 }
             }
             Text(station.name)
@@ -71,8 +70,8 @@ struct StationCard_Previews: PreviewProvider {
         ZStack {
             Color.accentColor.edgesIgnoringSafeArea(.all)
             VStack {
-                StationCard(station: testStation)
-                StationCard(station: kdStation)
+//                StationCard(station: $testStation)
+//                StationCard(station: $kdStation)
             }
            
         }

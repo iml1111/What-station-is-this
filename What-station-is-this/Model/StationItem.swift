@@ -15,8 +15,8 @@ struct StationItem: Identifiable {
     // 소속된 호선
     var lines: Array<String>
     // 위도, 경도 정보
-    var lat: Float
-    var lng: Float
+    var lat: Double
+    var lng: Double
     // 연결된 지하철역
     var connected_stations: Array<StationItem> = []
 }
@@ -25,6 +25,9 @@ var kdStation = StationItem(name: "건대입구", lines: ["02호선", "07호선"
 var testStation = StationItem(name: "건대입구", lines: ["용인경전철", "용인경전철", "용인경전철", "용인경전철"], lat: 37.540693, lng: 127.07023)
 
 var testStartStation = kdStation
+
+var startStation = StationItem(name: "현재 역은...", lines: [], lat: 0.0, lng: 0.0)
+var unknownStation = StationItem(name: "알 수 없음", lines: [], lat: 0.0, lng: 0.0)
 
 var allStations = [
     StationItem(name: "녹양", lines: ["01호선"], lat: 37.75938, lng: 127.042292),

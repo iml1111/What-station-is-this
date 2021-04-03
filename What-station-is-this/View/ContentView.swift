@@ -9,11 +9,21 @@
 
 import SwiftUI
 import UserNotifications
+import CoreLocation
+import MapKit
 
 
 struct ContentView: View {
     
-    @StateObject var delegate = NotificationDelegate()
+    @StateObject var notificationDelegate = NotificationDelegate()
+    @StateObject var locationFetcher = LocationFetcher()
+    @State var currentStationItem = startStation
+    
+    
+    // 앱 실행 초기 위치 추적기 실행 타이머
+    var firstTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    @State var firstTimerCount = 0
+    
     
     var body: some View {
         GeometryReader { gm in
@@ -28,33 +38,127 @@ struct ContentView: View {
                             .padding()
                             .padding(.top, 20)
                         Spacer()
-                        StationCard(station: testStartStation)
-                        NavigationLink(
-                            destination: SelectPageView()
-                        ){
-                            HStack {
-                                SearchPageButton()
+                        
+                        switch locationFetcher.authorizationStatus {
+                        case .authorizedAlways, .authorizedWhenInUse, .restricted:
+                            VStack {
+                                Button(
+                                    action: {
+                                        self.refeshCurrentStation()
+                                    },
+                                    label: {
+                                        StationCard(station: $currentStationItem)
+                                    }
+                                )
+                                NavigationLink(
+                                    destination: SelectPageView()
+                                ){
+                                    HStack {
+                                        SearchPageButton()
+                                    }
+                                }
                             }
+                        case .notDetermined:
+                            LocationNotDeterminedLabel()
+                        case .denied:
+                            LocationDeniedLabel()
+                        @unknown default:
+                            EtcLabel(string: "알 수 없는 에러 발생!")
                         }
+                        
+                        
                         Spacer()
+                        Button(
+                            action: {
+                                self.locationFetcher.start()
+                                if let location = self.locationFetcher.lastKnownLocation {
+                                    let CurrentStationItem: StationItem = getCurrentStationItem(location: location)
+                                    self.createNotification(location: location, stationName: CurrentStationItem.name)
+                                } else {
+                                    self.createNotification2()
+                                }
+                            }, label: {
+                                Text("현재 위치는?")
+                                    .foregroundColor(.white)
+                            }
+                        )
                     }
                 }
                 .navigationBarHidden(true)
             }
         }.onAppear {
+            // Notification Delegate 적용
             UNUserNotificationCenter.current()
                 .requestAuthorization(
                     options: [.alert, .badge, .sound]) { success, error in
-    //                    if success {
-    //                    } else if let error = error {
-    //                        print(error.localizedDescription)
-    //                    }
+                        if success {
+                        } else if let error = error {
+                            print(error.localizedDescription)
+                        }
                     }
-            UNUserNotificationCenter.current().delegate = delegate
-            print("notice perm OK.")
+            UNUserNotificationCenter.current().delegate = notificationDelegate
+            
+            // Location Delegate 적용 및 현재 위치 추적
+            self.locationFetcher.start()
+        }.onReceive(firstTimer) { _ in
+            if (
+                self.locationFetcher.authorizationStatus != .notDetermined
+                    && self.locationFetcher.authorizationStatus != .denied
+            ) {
+                self.refeshCurrentStation()
+                if (
+                    self.currentStationItem.name != unknownStation.name
+                    || self.firstTimerCount > 10
+                ){
+                    firstTimer.upstream.connect().cancel()
+                    self.firstTimerCount = -1
+                }
+                self.firstTimerCount += 1
+            }
         }
     }
+    
+    func refeshCurrentStation(){
+        if let location = self.locationFetcher.lastKnownLocation {
+            self.currentStationItem = getCurrentStationItem(location: location)
+        } else {
+            self.currentStationItem = unknownStation
+        }
+    }
+    
+    func createNotification(location: CLLocationCoordinate2D, stationName: String){
+        let content = UNMutableNotificationContent()
+        content.title = "가장 가까운 역은: \(stationName)"
+        content.body = "lat:\(location.latitude), lng: \(location.longitude)"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: 0.1, repeats: false)
+        let request = UNNotificationRequest(
+            identifier: "IN-APP",
+            content: content,
+            trigger: trigger
+        )
+        UNUserNotificationCenter.current()
+            .add(request, withCompletionHandler: nil)
+    }
+    
+    func createNotification2(){
+        let content = UNMutableNotificationContent()
+        content.title = "위치 정보 조회에 실패했어요!"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: 0.1, repeats: false)
+        let request = UNNotificationRequest(
+            identifier: "IN-APP",
+            content: content,
+            trigger: trigger
+        )
+        UNUserNotificationCenter.current()
+            .add(request, withCompletionHandler: nil)
+    }
 }
+
+
 
 // 알림 delegate ?? -> 이걸 안하면 알림이 안옴
 class NotificationDelegate:
@@ -72,3 +176,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
