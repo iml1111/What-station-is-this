@@ -14,8 +14,6 @@ struct StationTrackingView: View {
     @State var targetStation: StationItem
     @State var completed = false
     
-    let customTimer = RepeatingTimer(timeInterval: 1)
-    
     var body: some View {
         return
             VStack {
@@ -46,14 +44,8 @@ struct StationTrackingView: View {
             self.currentStation = self.locationFetcher.lastKnownStation
             self.locationFetcher.setTargetStation(station: self.targetStation)
             self.simpleNotification(text: "도착역 알림 설정이 완료되었어요!", interval: 0.1)
-            
-            customTimer.eventHandler = {
-                print(locationFetcher.lastKnownLocation)
-            }
-            customTimer.resume()
         }
         .onDisappear() {
-            customTimer.suspend()
         }
     }
     
