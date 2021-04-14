@@ -12,6 +12,9 @@ struct StationTrackingView: View {
     @EnvironmentObject var locationFetcher: LocationFetcher
     @State var currentStation: StationItem = startStation
     @State var targetStation: StationItem
+    @State var completed = false
+    
+    let customTimer = RepeatingTimer(timeInterval: 1)
     
     var body: some View {
         return
@@ -33,24 +36,34 @@ struct StationTrackingView: View {
                 // 디버깅용 버튼
                 VStack {
                     Button(
-                        action: {self.createNotification()},
+                        action: {self.simpleNotification(text: "알람 테스트 입니당", interval: 3)},
                         label: {Text("알림 보내기")}
                     )
                 }
             }
         .navigationTitle("도착역 예약 완료")
-            .onAppear {
-                self.currentStation = self.locationFetcher.lastKnownStation
-                self.locationFetcher.setTargetStation(station: self.targetStation)
+        .onAppear {
+            self.currentStation = self.locationFetcher.lastKnownStation
+            self.locationFetcher.setTargetStation(station: self.targetStation)
+            self.simpleNotification(text: "도착역 알림 설정이 완료되었어요!", interval: 0.1)
+            
+            customTimer.eventHandler = {
+                print(locationFetcher.lastKnownLocation)
             }
+            customTimer.resume()
+        }
+        .onDisappear() {
+            customTimer.suspend()
+        }
     }
     
-    func createNotification(){
+    func simpleNotification(text: String, interval: Double){
         let content = UNMutableNotificationContent()
-        content.title = "도착역에 가까워졌어요!"
+        content.title = text
+        content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: 0.1, repeats: false)
+            timeInterval: interval, repeats: false)
         let request = UNNotificationRequest(
             identifier: "IN-APP",
             content: content,

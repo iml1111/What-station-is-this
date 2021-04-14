@@ -16,6 +16,7 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     var lastKnownLocation: CLLocationCoordinate2D?
     @Published var lastKnownStation: StationItem = unknownStation
     var targetStation: StationItem = unknownStation
+    var nearestStations: Array<String> = []
     
     override init() {
         authorizationStatus = manager.authorizationStatus
@@ -43,5 +44,27 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func setTargetStation(station: StationItem){
         targetStation = station
+        setNearestStations(maxDistance: 2)
+    }
+    
+    func setNearestStations(maxDistance: Int){
+        var result: Array<String> = []
+        var queue: Array = [(name: targetStation.name, dist: 0)]
+        var start = 0
+        while start < queue.count {
+            let name = queue[start].name
+            let dist = queue[start].dist
+            start += 1
+            result.append(name)
+            
+            if dist < maxDistance {
+                for connected_name in capitalStationGraph[name]! {
+                    if !result.contains(connected_name) {
+                        queue.append((name: connected_name, dist: dist + 1))
+                    }
+                }
+            }
+        }
+        nearestStations = result
     }
 }
