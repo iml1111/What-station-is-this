@@ -28,8 +28,8 @@
 		A59698CC25FF886200A1EAB9 /* StationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698CB25FF886200A1EAB9 /* StationItem.swift */; };
 		A59C2F6E2600E8DD00DB99B8 /* StationTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */; };
 		A5A9504E2601CEFD007DFFD4 /* MultilineHstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9504D2601CEFD007DFFD4 /* MultilineHstack.swift */; };
+		A5FD4B782631940100554A63 /* Notificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD4B772631940100554A63 /* Notificator.swift */; };
 		A5FD79D22626CEC700B04A77 /* StationGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD79D12626CEC700B04A77 /* StationGraph.swift */; };
-		A5FD79E026271D2300B04A77 /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD79DF26271D2300B04A77 /* RepeatingTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,8 +57,8 @@
 		A59698CB25FF886200A1EAB9 /* StationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationItem.swift; sourceTree = "<group>"; };
 		A59C2F6D2600E8DD00DB99B8 /* StationTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTrackingView.swift; sourceTree = "<group>"; };
 		A5A9504D2601CEFD007DFFD4 /* MultilineHstack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineHstack.swift; sourceTree = "<group>"; };
+		A5FD4B772631940100554A63 /* Notificator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notificator.swift; sourceTree = "<group>"; };
 		A5FD79D12626CEC700B04A77 /* StationGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationGraph.swift; sourceTree = "<group>"; };
-		A5FD79DF26271D2300B04A77 /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
 		D7436B0B786153488B8423D8 /* Pods-What-station-is-this.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-What-station-is-this.debug.xcconfig"; path = "Target Support Files/Pods-What-station-is-this/Pods-What-station-is-this.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,7 @@
 			children = (
 				A5373258261715C700B2A3A3 /* Locator.swift */,
 				A5373260261759FA00B2A3A3 /* LocationFetcher.swift */,
-				A5FD79DF26271D2300B04A77 /* RepeatingTimer.swift */,
+				A5FD4B772631940100554A63 /* Notificator.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -294,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FD4B782631940100554A63 /* Notificator.swift in Sources */,
 				A5FD79D22626CEC700B04A77 /* StationGraph.swift in Sources */,
 				A5373259261715C700B2A3A3 /* Locator.swift in Sources */,
 				A536B7C925FE385A00CF53F7 /* What_station_is_this.xcdatamodeld in Sources */,
@@ -307,7 +308,6 @@
 				A5A9504E2601CEFD007DFFD4 /* MultilineHstack.swift in Sources */,
 				A56712CE26038A4B00667539 /* Arrows.swift in Sources */,
 				A536B7C225FE385A00CF53F7 /* AppDelegate.swift in Sources */,
-				A5FD79E026271D2300B04A77 /* RepeatingTimer.swift in Sources */,
 				A59698CC25FF886200A1EAB9 /* StationItem.swift in Sources */,
 				A59C2F6E2600E8DD00DB99B8 /* StationTrackingView.swift in Sources */,
 				A536B7C425FE385A00CF53F7 /* SceneDelegate.swift in Sources */,
