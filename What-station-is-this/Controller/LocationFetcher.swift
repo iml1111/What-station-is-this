@@ -16,7 +16,6 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     var lastKnownLocation: CLLocationCoordinate2D?
     @Published var lastKnownStation: StationItem = unknownStation
     var targetStation: StationItem = unknownStation
-    var nearestStations: Array<String> = []
     
     override init() {
         authorizationStatus = manager.authorizationStatus
@@ -44,10 +43,10 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func setTargetStation(station: StationItem){
         targetStation = station
-        setNearestStations(maxDistance: 2)
     }
     
-    func setNearestStations(maxDistance: Int){
+    func setNearestStations(maxDistance: Int) -> Array<String>{
+        // 현재 도착역에 대하여 특정 거리내의 모든 역 이름 탐색
         var result: Array<String> = []
         var queue: Array = [(name: targetStation.name, dist: 0)]
         var start = 0
@@ -65,6 +64,6 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
                 }
             }
         }
-        nearestStations = result
+        return result
     }
 }

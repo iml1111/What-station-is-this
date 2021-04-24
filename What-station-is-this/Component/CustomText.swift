@@ -11,7 +11,7 @@ struct SearchPageButton: View {
     
     var body: some View {
         HStack {
-            Text("도착역 예약하기")
+            Text("도착역 찾아보기")
                 .font(.system(size: 20))
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.white)

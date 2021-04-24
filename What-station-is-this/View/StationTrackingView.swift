@@ -6,46 +6,52 @@
 //
 
 import SwiftUI
+import ExytePopupView
 
 struct StationTrackingView: View {
     
     @EnvironmentObject var locationFetcher: LocationFetcher
     @State var currentStation: StationItem = startStation
     @State var targetStation: StationItem
-    @State var completed = false
+    @State var showingPopup = false
     
     var body: some View {
-        return
-            VStack {
-                HStack {
-                    Text("가까워지면 알림을 보내드릴게요!")
-                        .font(.title3)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.top, 5)
+        return VStack {
+            HStack {
+                Text("\(targetStation.name)역으로 가는 중...")
+                    .font(.system(size: 17))
                 Spacer()
-                VStack(spacing: 30) {
-                    StationBlackCard(station: targetStation)
-                    Arrows()
-                    StationBlackBindingCard(station: $currentStation)
-                }
-                Spacer()
-                // 디버깅용 버튼
-                VStack {
-                    Button(
-                        action: {simpleNotification(text: "알람 테스트 입니당", interval: 3)},
-                        label: {Text("알림 보내기")}
-                    )
-                }
             }
-        .navigationTitle("도착역 예약 완료")
+            .padding(.horizontal)
+            .padding(.top, 5)
+            Spacer()
+            VStack(spacing: 30) {
+                Button(
+                    action: {
+                        self.currentStation = self.locationFetcher.lastKnownStation
+                        self.showingPopup = true
+                    },
+                    label: {
+                        StationBlackBindingCard(station: $currentStation)
+                    }
+                )
+            }
+            Spacer()
+        }
+        .navigationTitle("지금 어디쯤이지?")
         .onAppear {
             self.currentStation = self.locationFetcher.lastKnownStation
             self.locationFetcher.setTargetStation(station: self.targetStation)
-            simpleNotification(text: "도착역 알림 설정이 완료되었어요!", interval: 0.1)
         }
-        .onDisappear() {
+        .popup(
+            isPresented: $showingPopup,
+            type: .toast,
+            position: .top,
+            animation: .spring(),
+            autohideIn: 1.7,
+            closeOnTap: true,
+            closeOnTapOutside: true) {
+            WhiteTopToastMessage(string: "현재 역 갱신 완료!")
         }
     }
 }

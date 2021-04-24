@@ -48,7 +48,7 @@ struct SelectPageView: View {
                     }
                 }
             }
-            .navigationBarTitle("도착역 예약하기")
+            .navigationBarTitle("도착역 찾아보기")
             .resignKeyboardOnDragGesture()
             //.animation(.linear)
         }

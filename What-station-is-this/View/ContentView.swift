@@ -12,7 +12,7 @@ import UserNotifications
 import CoreLocation
 import MapKit
 import ExytePopupView
-
+// 유의사항: gps 부정확 안내, 수도권 지하철역만 지원, 알림 추후 추가 예정
 
 struct ContentView: View {
     
@@ -25,6 +25,7 @@ struct ContentView: View {
     // 앱 실행 초기 위치 추적기 실행 타이머
     var firstTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @State var firstTimerCount = 0
+    var permanentTimer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
     
     
     var body: some View {
@@ -90,7 +91,7 @@ struct ContentView: View {
                 .navigationBarHidden(true)
                 .popup(
                     isPresented: $showingPopup,
-                    type: .default,
+                    type: .toast,
                     position: .top,
                     animation: .spring(),
                     autohideIn: 1.7,
@@ -114,6 +115,7 @@ struct ContentView: View {
             self.locationFetcher.start()
             
         }.onReceive(firstTimer) { _ in
+            // First Timer: 맨처음 앱을 켰을때 최대한 빨리 역을 갱신시키기 위함
             if (
                 self.locationFetcher.authorizationStatus != .notDetermined
                     && self.locationFetcher.authorizationStatus != .denied
@@ -127,6 +129,14 @@ struct ContentView: View {
                     self.firstTimerCount = -1
                 }
                 self.firstTimerCount += 1
+            }
+        }.onReceive(permanentTimer) { _ in
+            // Permenant Timer: 첫 실행 이후, 5초마다 정기적으로 현재역 갱신
+            if (
+                self.locationFetcher.authorizationStatus != .notDetermined
+                    && self.locationFetcher.authorizationStatus != .denied
+            ) {
+                self.currentStationItem = self.locationFetcher.lastKnownStation
             }
         }
     }

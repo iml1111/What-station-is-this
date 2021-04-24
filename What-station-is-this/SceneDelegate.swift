@@ -3,7 +3,6 @@
 //  What-station-is-this
 //
 //  Created by 신희재 on 2021/03/14.
-//https://medium.com/mobil-dev/background-task-with-bgtaskscheduler-1d49e22b1519
 
 import UIKit
 import SwiftUI
@@ -25,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         
+        // Appdelegate 전역에 생성된 locationFetcher 할당
         let locationFetcher = (UIApplication.shared.delegate as! AppDelegate).locationFetcher
         
         let contentView = ContentView()
@@ -50,19 +50,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-        print("액티브")
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
-        print("인액티브")
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-        print("포그라운드")
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -72,8 +69,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-        (UIApplication.shared.delegate as! AppDelegate).scheduleLocationRefresh()
-        print("백그라운드")
     }
 
 

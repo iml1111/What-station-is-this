@@ -15,9 +15,10 @@ struct StationCard: View {
         VStack {
             HStack(alignment: .center) {
                 ForEach(0..<self.station.lines.count, id: \.self) { idx in
-                    if idx < 2 {
-                        Image(self.station.lines[idx])
-                    }
+                    Image(self.station.lines[idx])
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 20)
                 }
             }
             Text(station.name)
@@ -30,7 +31,10 @@ struct StationCard: View {
         .padding(.vertical, 12.0)
         .background(Color.white)
         .cornerRadius(40)
-        
+        .shadow(
+            color: Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)),
+            radius: 2, x: 0, y: 1
+        )
     }
 }
 
@@ -42,11 +46,11 @@ struct StationBlackCard: View {
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                ForEach(0..<self.station.lines.count) { idx in
-                    if idx < 2 {
-                        Image(self.station.lines[idx])
-                    }
-
+                ForEach(0..<self.station.lines.count, id: \.self) { idx in
+                    Image(self.station.lines[idx])
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 20)
                 }
             }
             Text(station.name)
@@ -73,10 +77,10 @@ struct StationBlackBindingCard: View {
         VStack {
             HStack(alignment: .center) {
                 ForEach(0..<self.station.lines.count, id: \.self) { idx in
-                    if idx < 2 {
-                        Image(self.station.lines[idx])
-                    }
-
+                    Image(self.station.lines[idx])
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 20)
                 }
             }
             Text(station.name)
@@ -89,7 +93,10 @@ struct StationBlackBindingCard: View {
         .padding(.vertical, 12.0)
         .background(Color.white)
         .cornerRadius(40)
-        .shadow(color: Color.gray, radius: 2, x: 0, y: 0)
+        .shadow(
+            color: Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)),
+            radius: 2, x: 0, y: 1
+        )
         
     }
 }

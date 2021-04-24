@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreData
-import BackgroundTasks
 
 
 @main
@@ -20,47 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         locationFetcher = LocationFetcher()
         
-        // 백그라운드 로케이션 스케쥴러 등록
-        BGTaskScheduler.shared.register(
-            forTaskWithIdentifier: "com.iml.What-station-is-this.LocationRefresh",
-            using: DispatchQueue.global()) { task in
-            self.locationRefresh(task: task as! BGAppRefreshTask)
-        }
-        
         // Fetch data once an hour.
         return true
-    }
-    
-    func locationRefresh(task: BGAppRefreshTask) {
-        simpleNotification(text: "HELLO", interval: 0.1)
-        // 실제 작업
-//        if self.locationFetcher.targetStation.name != unknownStation.name {
-//            if self.locationFetcher.lastKnownStation.name != unknownStation.name {
-//
-//                let currentStationName = self.locationFetcher.lastKnownStation.name
-//                if self.locationFetcher.nearestStations.contains(currentStationName) {
-//                    simpleNotification(text: "도착역에 가까워졌어요!", interval: 0.1)
-//                }
-//            }
-//        }
-        
-        task.expirationHandler = {
-            print("스케쥴링 실패")
-            task.setTaskCompleted(success: false)
-        }
-        task.setTaskCompleted(success: true)
-        scheduleLocationRefresh()
-    }
-    
-    func scheduleLocationRefresh() {
-        // 다음 스케쥴을 예약하기 위한 함수
-        let request = BGAppRefreshTaskRequest(identifier:"com.iml.What-station-is-this.LocationRefresh")
-        request.earliestBeginDate = Date(timeIntervalSinceNow: 5)
-        do {
-            try BGTaskScheduler.shared.submit(request)
-            print("스케쥴링 예약 완료")
-        } catch { print("Could not schedule app refresh: \(error)") }
-        
     }
 
     // MARK: UISceneSession Lifecycle
