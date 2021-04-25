@@ -35,7 +35,7 @@ struct SelectPageView: View {
             List {
                 ForEach(
                     self.stationItems.filter {
-                        self.searchText.isEmpty ? false : $0.name.contains(self.searchText)
+                        self.searchText.isEmpty ? true : $0.name.contains(self.searchText)
                     }
                 ){ station in
                     NavigationLink(

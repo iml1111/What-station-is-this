@@ -42,11 +42,23 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func setTargetStation(station: StationItem){
+        // 목적지 지하철역이 지정됨을 본 객체에게 알림
         targetStation = station
+        setAllDistanceByTargetStation()
+    }
+    
+    func setAllDistanceByTargetStation() {
+        // 타겟 역을 기준으로 모든 역간의 최단 노드거리 산출
+        // 각 거리를 "역":거리 형태의 딕셔너리로 내부 변수에 저장할 것
+    }
+    
+    func getDistanceByTargetStation(station: StationItem) -> Int{
+        let result: Int = 15
+        return result
     }
     
     func setNearestStations(maxDistance: Int) -> Array<String>{
-        // 현재 도착역에 대하여 특정 거리내의 모든 역 이름 탐색
+        // 현재 도착역에 대하여 특정 거리내의 모든 역 이름 탐색 (현재 사용 X)
         var result: Array<String> = []
         var queue: Array = [(name: targetStation.name, dist: 0)]
         var start = 0

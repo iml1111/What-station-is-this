@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		877FD6A5A44369ABFA6890AD /* Pods_What_station_is_this.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B397571CF00D1929D45A61D /* Pods_What_station_is_this.framework */; };
+		A52AE6FE26359EC600F595CE /* DistanceCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52AE6FD26359EC600F595CE /* DistanceCircle.swift */; };
 		A536B7C225FE385A00CF53F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7C125FE385A00CF53F7 /* AppDelegate.swift */; };
 		A536B7C425FE385A00CF53F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7C325FE385A00CF53F7 /* SceneDelegate.swift */; };
 		A536B7C625FE385A00CF53F7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7C525FE385A00CF53F7 /* ContentView.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		0B397571CF00D1929D45A61D /* Pods_What_station_is_this.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_What_station_is_this.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90BFC31B329A3E2B6B71EFB5 /* Pods-What-station-is-this.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-What-station-is-this.release.xcconfig"; path = "Target Support Files/Pods-What-station-is-this/Pods-What-station-is-this.release.xcconfig"; sourceTree = "<group>"; };
+		A52AE6FD26359EC600F595CE /* DistanceCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCircle.swift; sourceTree = "<group>"; };
 		A536B7BE25FE385A00CF53F7 /* What-station-is-this.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What-station-is-this.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A536B7C125FE385A00CF53F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A536B7C325FE385A00CF53F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				A56712C92603708300667539 /* SearchBar.swift */,
 				A56712CD26038A4B00667539 /* Arrows.swift */,
 				A538141A2618922E00FBC94D /* TopToastMessage.swift */,
+				A52AE6FD26359EC600F595CE /* DistanceCircle.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				A59698C825FF862B00A1EAB9 /* SearchCard.swift in Sources */,
 				A56712BF2603538500667539 /* SelectPageView.swift in Sources */,
 				A536B7DB25FE3A1400CF53F7 /* CustomText.swift in Sources */,
+				A52AE6FE26359EC600F595CE /* DistanceCircle.swift in Sources */,
 				A56712CA2603708300667539 /* SearchBar.swift in Sources */,
 				A5A9504E2601CEFD007DFFD4 /* MultilineHstack.swift in Sources */,
 				A56712CE26038A4B00667539 /* Arrows.swift in Sources */,

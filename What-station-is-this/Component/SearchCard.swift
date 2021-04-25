@@ -17,19 +17,18 @@ struct SearchCard: View {
                 Text(station.name)
                     .font(.title2)
                     .bold()
-                    .padding(.leading)
                 Spacer()
-                HStack() {
-                    ForEach(0..<self.station.lines.count) { idx in
-                        if idx < 3 {
-                            Image(self.station.lines[idx])
-                        }
-
-                    }
-                }.padding(.trailing)
             }
-            .padding(.vertical, 10)
-        }
+            HStack {
+                ForEach(0..<self.station.lines.count) { idx in
+                    Image(self.station.lines[idx])
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 20)
+                }
+                Spacer()
+            }
+        }.padding(3)
         
     }
 }

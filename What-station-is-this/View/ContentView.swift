@@ -41,7 +41,9 @@ struct ContentView: View {
                             .padding()
                             .padding(.top, 20)
                         Spacer()
-                        
+                        Image(systemName: "tram.fill")
+                            .foregroundColor(.white)
+                            .font(.system(size: 42))
                         switch locationFetcher.authorizationStatus {
                         case .authorizedAlways, .authorizedWhenInUse, .restricted:
                             VStack {
@@ -71,6 +73,7 @@ struct ContentView: View {
                         }
                         
                         Spacer()
+                        Spacer()
                         // 디버깅용 버튼
                         Button(
                             action: {
@@ -83,7 +86,7 @@ struct ContentView: View {
                                 }
                             }, label: {
                                 Text("현재 위치는?")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.accentColor)
                             }
                         )
                     }

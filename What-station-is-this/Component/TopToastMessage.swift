@@ -18,17 +18,17 @@ struct WhiteTopToastMessage: View {
                     .fontWeight(.bold)
                     .foregroundColor(.accentColor)
             }
-            .padding()
+            .padding(.vertical, 10)
+            .padding(.horizontal, 14)
             .background(Color.white)
             .cornerRadius(20)
             .shadow(radius: 5)
             .padding()
             Spacer()
         }
-        
-        
     }
 }
+
 
 struct TopToastMessage_Previews: PreviewProvider {
     static var previews: some View {
