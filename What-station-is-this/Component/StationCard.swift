@@ -10,68 +10,42 @@ import SwiftUI
 struct StationCard: View {
     
     @Binding var station: StationItem
+    var gmWidth: CGFloat
+    var gmHeight: CGFloat
     
     var body: some View {
-        VStack {
-            HStack(alignment: .center) {
-                ForEach(0..<self.station.lines.count, id: \.self) { idx in
-                    Image(self.station.lines[idx])
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 20)
+                VStack {
+                    HStack(alignment: .center) {
+                        ForEach(0..<self.station.lines.count, id: \.self) { idx in
+                            Image(self.station.lines[idx])
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: gmHeight * 0.03)
+                        }
+                    }
+                    Text(station.name)
+                        .font(.system(size: gmWidth * 0.06))
+                        .fontWeight(.bold)
+                        .foregroundColor(.accentColor)
                 }
-            }
-            Text(station.name)
-                .font(.system(size: 25))
-                .fontWeight(.bold)
-                .foregroundColor(.accentColor)
-        }
-        .frame(minWidth:210)
-        .padding(.horizontal, 20.0)
-        .padding(.vertical, 12.0)
-        .background(Color.white)
-        .cornerRadius(40)
-        .shadow(
-            color: Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)),
-            radius: 2, x: 0, y: 1
-        )
+                .frame(maxWidth: gmWidth * 0.65, maxHeight: gmHeight * 0.1)
+                .padding(.horizontal, 20.0)
+                .padding(.vertical, 12.0)
+                .background(Color.white)
+                .cornerRadius(40)
+                .shadow(
+                    color: Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)),
+                    radius: 2, x: 0, y: 1
+                )
     }
 }
 
 
-struct StationBlackCard: View {
-    
-    var station: StationItem
-    
-    var body: some View {
-        VStack {
-            HStack(alignment: .center) {
-                ForEach(0..<self.station.lines.count, id: \.self) { idx in
-                    Image(self.station.lines[idx])
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height: 20)
-                }
-            }
-            Text(station.name)
-                .font(.system(size: 25))
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-        }
-        .frame(minWidth:210)
-        .padding(.horizontal, 20.0)
-        .padding(.vertical, 12.0)
-        .background(Color.white)
-        .cornerRadius(40)
-        .shadow(color: Color.gray, radius: 2, x: 0, y: 0)
-        
-    }
-}
-
-
-struct StationBlackBindingCard: View {
+struct StationBlueCard: View {
     
     @Binding var station: StationItem
+    var gmWidth: CGFloat
+    var gmHeight: CGFloat
     
     var body: some View {
         VStack {
@@ -80,18 +54,22 @@ struct StationBlackBindingCard: View {
                     Image(self.station.lines[idx])
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(height: 20)
+                        .frame(height: gmHeight * 0.03)
                 }
             }
             Text(station.name)
-                .font(.system(size: 25))
+                .font(.system(size: gmWidth * 0.06))
                 .fontWeight(.bold)
                 .foregroundColor(.black)
         }
-        .frame(minWidth:210)
-        .padding(.horizontal, 20.0)
-        .padding(.vertical, 12.0)
+        .frame(maxWidth: gmWidth * 0.65, maxHeight: gmHeight * 0.1)
+        .padding(.horizontal, 10.0)
+        .padding(.vertical, 6.0)
         .background(Color.white)
+        .cornerRadius(40)
+        .padding(.horizontal, 6.0)
+        .padding(.vertical, 6.0)
+        .background(Color.accentColor)
         .cornerRadius(40)
         .shadow(
             color: Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)),

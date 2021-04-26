@@ -11,6 +11,7 @@ struct WhiteTopToastMessage: View {
     let string: String
     var body: some View {
         VStack {
+            Spacer()
             HStack {
                 Image(systemName: "tram")
                     .foregroundColor(.accentColor)
@@ -18,13 +19,14 @@ struct WhiteTopToastMessage: View {
                     .fontWeight(.bold)
                     .foregroundColor(.accentColor)
             }
-            .padding(.vertical, 10)
-            .padding(.horizontal, 14)
+            .padding(.vertical, 17)
+            .padding(.horizontal, 20)
             .background(Color.white)
             .cornerRadius(20)
             .shadow(radius: 5)
             .padding()
-            Spacer()
+            .padding(.bottom, 10)
+            
         }
     }
 }

@@ -11,23 +11,27 @@ struct DistanceCircle: View {
     
     @Binding var remainedInfo: String
     @Binding var remainedPercent: CGFloat
-    
-    let size: CGFloat = 180
-    let lineWidth: CGFloat = 16
+    let gmWidth: CGFloat
+    let gmHeight: CGFloat
+
     
     var body: some View {
         ZStack {
             Circle()
                 .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                .stroke(Color.black.opacity(0.09),
-                        style: StrokeStyle(lineWidth: self.lineWidth, lineCap: .round))
-                .frame(width: self.size, height: self.size)
+                .stroke(Color(UIColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1.0)),
+                        style: StrokeStyle(lineWidth: 16, lineCap: .round))
+                .frame(width: gmWidth * 0.6, height: gmWidth * 0.6)
+                .shadow(
+                    color: Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)),
+                    radius: 2, x: 0, y: 1
+                )
             
             Circle()
                 .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: self.remainedPercent)
                 .stroke(Color.accentColor,
-                        style: StrokeStyle(lineWidth: self.lineWidth, lineCap: .round))
-                .frame(width: self.size, height: self.size)
+                        style: StrokeStyle(lineWidth: 16, lineCap: .round))
+                .frame(width: gmWidth * 0.6, height: gmWidth * 0.6)
                 .rotationEffect(.init(degrees: -90))
                 .animation(.default)
             
@@ -42,7 +46,6 @@ struct DistanceCircle: View {
             }
             
         }
-       
     }
 }
 

@@ -9,6 +9,11 @@ import SwiftUI
 
 struct SelectPageView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @FetchRequest(sortDescriptors: [])
+    private var recentSelectItems: FetchedResults<RecentSelected>
+    
     @State var searchText: String = ""
     @State var showCancelButton: Bool = false
     @State var stationItems: Array<StationItem> = Array(capitalStations.values)
@@ -32,27 +37,43 @@ struct SelectPageView: View {
                 searchText: $searchText,
                 showCancelButton: $showCancelButton
             )
-            List {
-                ForEach(
-                    self.stationItems.filter {
-                        self.searchText.isEmpty ? true : $0.name.contains(self.searchText)
-                    }
-                ){ station in
-                    NavigationLink(
-                        destination:
-                            StationTrackingView(
-                                targetStation: station
-                            )
-                    ){
-                        SearchCard(station: station)
+            if self.searchText.isEmpty {
+                List {
+                    ForEach(recentSelectItems) { item in
+                        NavigationLink(
+                            destination:
+                                StationTrackingView(
+                                    targetStation: capitalStations[item.name!]!
+                                )
+                        ){
+                            SearchCard(station: capitalStations[item.name!]!)
+                        }
                     }
                 }
             }
-            .navigationBarTitle("도착역 찾아보기")
-            .resignKeyboardOnDragGesture()
-            //.animation(.linear)
+            else {
+                List {
+                    ForEach(
+                        self.stationItems.filter {
+                            $0.name.contains(self.searchText)
+                        }
+                    ){ station in
+                        NavigationLink(
+                            destination:
+                                StationTrackingView(
+                                    targetStation: station
+                                )
+                        ){
+                            SearchCard(station: station)
+                        }
+                    }
+                }
+            }
         }
+        .navigationBarTitle("도착역 찾아보기")
+        .resignKeyboardOnDragGesture()
     }
+    
 }
 
 // 액션별로 키보드 영역을 내리기 위한 처리

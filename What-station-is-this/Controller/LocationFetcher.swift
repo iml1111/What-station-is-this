@@ -16,6 +16,8 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     var lastKnownLocation: CLLocationCoordinate2D?
     @Published var lastKnownStation: StationItem = unknownStation
     var targetStation: StationItem = unknownStation
+    var distanceDictByTargetStation: Dictionary<String, Int> = [:]
+    
     
     override init() {
         authorizationStatus = manager.authorizationStatus
@@ -50,15 +52,36 @@ class LocationFetcher: NSObject, ObservableObject, CLLocationManagerDelegate {
     func setAllDistanceByTargetStation() {
         // 타겟 역을 기준으로 모든 역간의 최단 노드거리 산출
         // 각 거리를 "역":거리 형태의 딕셔너리로 내부 변수에 저장할 것
+        distanceDictByTargetStation = [:]
+        var queue: Array = [(name: targetStation.name, dist: 0)]
+        var start = 0
+        
+        while start < queue.count {
+            let name = queue[start].name
+            let dist = queue[start].dist
+            start += 1
+            distanceDictByTargetStation[name] = dist
+            
+            for next_name in capitalStationGraph[name]! {
+                if let next_dist = distanceDictByTargetStation[next_name] {
+                    if dist + 1 < next_dist {
+                        queue.append((name: next_name, dist: dist + 1))
+                    }
+                }
+                else {
+                    queue.append((name: next_name, dist: dist + 1))
+                }
+            }
+        }
+        
     }
     
     func getDistanceByTargetStation(station: StationItem) -> Int{
-        let result: Int = 15
-        return result
+        return distanceDictByTargetStation[station.name]!
     }
     
-    func setNearestStations(maxDistance: Int) -> Array<String>{
-        // 현재 도착역에 대하여 특정 거리내의 모든 역 이름 탐색 (현재 사용 X)
+    func getNearestStations(maxDistance: Int) -> Array<String>{
+        // 현재 도착역에 대하여 특정 거리내의 모든 역 이름을 반환 (현재 사용 X)
         var result: Array<String> = []
         var queue: Array = [(name: targetStation.name, dist: 0)]
         var start = 0

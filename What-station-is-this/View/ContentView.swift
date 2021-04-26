@@ -8,15 +8,15 @@
 // - 설정 창 ?
 
 import SwiftUI
-import UserNotifications
+//import UserNotifications
 import CoreLocation
 import MapKit
 import ExytePopupView
-// 유의사항: gps 부정확 안내, 수도권 지하철역만 지원, 알림 추후 추가 예정
+// 유의사항: gps 부정확 안내, 수도권 지하철역만 지원, 알림 추후 추가 예정, 실제 최단 거리는 아님
 
 struct ContentView: View {
     
-    @StateObject var notificationDelegate = NotificationDelegate()
+    // @StateObject var notificationDelegate = NotificationDelegate()
     @EnvironmentObject var locationFetcher: LocationFetcher
     @State var currentStationItem = startStation
     
@@ -47,15 +47,26 @@ struct ContentView: View {
                         switch locationFetcher.authorizationStatus {
                         case .authorizedAlways, .authorizedWhenInUse, .restricted:
                             VStack {
-                                Button(
-                                    action: {
-                                        self.currentStationItem = self.locationFetcher.lastKnownStation
-                                        self.showingPopup = true
-                                    },
-                                    label: {
-                                        StationCard(station: $currentStationItem)
-                                    }
-                                )
+                                ZStack {
+                                    Rectangle()
+                                        .fill(Color.white)
+                                        .frame(maxWidth: .infinity,
+                                               maxHeight: 23)
+                                    Button(
+                                        action: {
+                                            self.currentStationItem = self.locationFetcher.lastKnownStation
+                                            self.showingPopup = true
+                                        },
+                                        label: {
+                                            StationCard(
+                                                station: $currentStationItem,
+                                                gmWidth: gm.size.width,
+                                                gmHeight: gm.size.height
+                                            )
+                                        }
+                                    ).buttonStyle(SmallerButtonStyle())
+                                }
+                                
                                 NavigationLink(
                                     destination: SelectPageView()
                                 ){
@@ -71,33 +82,32 @@ struct ContentView: View {
                         @unknown default:
                             EtcLabel(string: "알 수 없는 에러 발생!")
                         }
-                        
                         Spacer()
                         Spacer()
                         // 디버깅용 버튼
-                        Button(
-                            action: {
-                                self.locationFetcher.start()
-                                if let location = self.locationFetcher.lastKnownLocation {
-                                    let CurrentStationItem = self.locationFetcher.lastKnownStation
-                                    self.createNotification(location: location, stationName: CurrentStationItem.name)
-                                } else {
-                                    self.createNotification2()
-                                }
-                            }, label: {
-                                Text("현재 위치는?")
-                                    .foregroundColor(.accentColor)
-                            }
-                        )
+//                        Button(
+//                            action: {
+//                                self.locationFetcher.start()
+//                                if let location = self.locationFetcher.lastKnownLocation {
+//                                    let CurrentStationItem = self.locationFetcher.lastKnownStation
+//                                    self.createNotification(location: location, stationName: CurrentStationItem.name)
+//                                } else {
+//                                    self.createNotification2()
+//                                }
+//                            }, label: {
+//                                Text("현재 위치는?")
+//                                    .foregroundColor(.accentColor)
+//                            }
+//                        )
                     }
                 }
                 .navigationBarHidden(true)
                 .popup(
                     isPresented: $showingPopup,
                     type: .toast,
-                    position: .top,
+                    position: .bottom,
                     animation: .spring(),
-                    autohideIn: 1.7,
+                    autohideIn: 1,
                     closeOnTap: true,
                     closeOnTapOutside: true) {
                     WhiteTopToastMessage(string: "현재 역 갱신 완료!")
@@ -105,15 +115,15 @@ struct ContentView: View {
             }
         }.onAppear {
             // Notification Delegate 적용
-            UNUserNotificationCenter.current()
-                .requestAuthorization(
-                    options: [.alert, .badge, .sound]) { success, error in
-                        if success {
-                        } else if let error = error {
-                            print(error.localizedDescription)
-                        }
-                    }
-            UNUserNotificationCenter.current().delegate = notificationDelegate
+//            UNUserNotificationCenter.current()
+//                .requestAuthorization(
+//                    options: [.alert, .badge, .sound]) { success, error in
+//                        if success {
+//                        } else if let error = error {
+//                            print(error.localizedDescription)
+//                        }
+//                    }
+//            UNUserNotificationCenter.current().delegate = notificationDelegate
             // Location Delegate 적용 및 현재 위치 추적
             self.locationFetcher.start()
             
@@ -144,49 +154,49 @@ struct ContentView: View {
         }
     }
     
-    func createNotification(location: CLLocationCoordinate2D, stationName: String){
-        let content = UNMutableNotificationContent()
-        content.title = "가장 가까운 역은: \(stationName)"
-        content.body = "lat:\(location.latitude), lng: \(location.longitude)"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(
-            identifier: "IN-APP",
-            content: content,
-            trigger: trigger
-        )
-        UNUserNotificationCenter.current()
-            .add(request, withCompletionHandler: nil)
-    }
-    
-    func createNotification2(){
-        let content = UNMutableNotificationContent()
-        content.title = "위치 정보 조회에 실패했어요!"
-        
-        let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(
-            identifier: "IN-APP",
-            content: content,
-            trigger: trigger
-        )
-        UNUserNotificationCenter.current()
-            .add(request, withCompletionHandler: nil)
-    }
+//    func createNotification(location: CLLocationCoordinate2D, stationName: String){
+//        let content = UNMutableNotificationContent()
+//        content.title = "가장 가까운 역은: \(stationName)"
+//        content.body = "lat:\(location.latitude), lng: \(location.longitude)"
+//
+//        let trigger = UNTimeIntervalNotificationTrigger(
+//            timeInterval: 0.1, repeats: false)
+//        let request = UNNotificationRequest(
+//            identifier: "IN-APP",
+//            content: content,
+//            trigger: trigger
+//        )
+//        UNUserNotificationCenter.current()
+//            .add(request, withCompletionHandler: nil)
+//    }
+//
+//    func createNotification2(){
+//        let content = UNMutableNotificationContent()
+//        content.title = "위치 정보 조회에 실패했어요!"
+//
+//        let trigger = UNTimeIntervalNotificationTrigger(
+//            timeInterval: 0.1, repeats: false)
+//        let request = UNNotificationRequest(
+//            identifier: "IN-APP",
+//            content: content,
+//            trigger: trigger
+//        )
+//        UNUserNotificationCenter.current()
+//            .add(request, withCompletionHandler: nil)
+//    }
 }
 
 
 
 // 알림 delegate ?? -> 이걸 안하면 알림이 안옴
-class NotificationDelegate:
-    NSObject, ObservableObject, UNUserNotificationCenterDelegate {
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        completionHandler([.badge, .banner, .sound])
-    }
-}
+//class NotificationDelegate:
+//    NSObject, ObservableObject, UNUserNotificationCenterDelegate {
+//
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//
+//        completionHandler([.badge, .banner, .sound])
+//    }
+//}
 
 
 struct ContentView_Previews: PreviewProvider {

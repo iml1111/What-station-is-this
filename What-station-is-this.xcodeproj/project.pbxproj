@@ -20,10 +20,12 @@
 		A536B7DF25FE457F00CF53F7 /* StationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A536B7DE25FE457F00CF53F7 /* StationCard.swift */; };
 		A5373259261715C700B2A3A3 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5373258261715C700B2A3A3 /* Locator.swift */; };
 		A5373261261759FA00B2A3A3 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5373260261759FA00B2A3A3 /* LocationFetcher.swift */; };
-		A538141B2618922E00FBC94D /* TopToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538141A2618922E00FBC94D /* TopToastMessage.swift */; };
+		A538141B2618922E00FBC94D /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538141A2618922E00FBC94D /* ToastMessage.swift */; };
 		A56712BF2603538500667539 /* SelectPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712BE2603538500667539 /* SelectPageView.swift */; };
 		A56712CA2603708300667539 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712C92603708300667539 /* SearchBar.swift */; };
 		A56712CE26038A4B00667539 /* Arrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56712CD26038A4B00667539 /* Arrows.swift */; };
+		A56C64272636BC7E00C5AAC9 /* SmallerButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C64262636BC7E00C5AAC9 /* SmallerButtonStyle.swift */; };
+		A56C64302636FB0A00C5AAC9 /* coreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C642F2636FB0A00C5AAC9 /* coreDataController.swift */; };
 		A5747B6D2605D2C1002DDA86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5747B6F2605D2C1002DDA86 /* InfoPlist.strings */; };
 		A59698C825FF862B00A1EAB9 /* SearchCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698C725FF862B00A1EAB9 /* SearchCard.swift */; };
 		A59698CC25FF886200A1EAB9 /* StationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59698CB25FF886200A1EAB9 /* StationItem.swift */; };
@@ -49,10 +51,12 @@
 		A536B7DE25FE457F00CF53F7 /* StationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCard.swift; sourceTree = "<group>"; };
 		A5373258261715C700B2A3A3 /* Locator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
 		A5373260261759FA00B2A3A3 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
-		A538141A2618922E00FBC94D /* TopToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopToastMessage.swift; sourceTree = "<group>"; };
+		A538141A2618922E00FBC94D /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		A56712BE2603538500667539 /* SelectPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPageView.swift; sourceTree = "<group>"; };
 		A56712C92603708300667539 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		A56712CD26038A4B00667539 /* Arrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrows.swift; sourceTree = "<group>"; };
+		A56C64262636BC7E00C5AAC9 /* SmallerButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallerButtonStyle.swift; sourceTree = "<group>"; };
+		A56C642F2636FB0A00C5AAC9 /* coreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = coreDataController.swift; sourceTree = "<group>"; };
 		A5747B682605D274002DDA86 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A5747B6E2605D2C1002DDA86 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A59698C725FF862B00A1EAB9 /* SearchCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCard.swift; sourceTree = "<group>"; };
@@ -114,7 +118,6 @@
 				A536B7C325FE385A00CF53F7 /* SceneDelegate.swift */,
 				A536B7CA25FE385A00CF53F7 /* Assets.xcassets */,
 				A536B7CF25FE385A00CF53F7 /* LaunchScreen.storyboard */,
-				A536B7C725FE385A00CF53F7 /* What_station_is_this.xcdatamodeld */,
 				A536B7CC25FE385A00CF53F7 /* Preview Content */,
 				A5747B6F2605D2C1002DDA86 /* InfoPlist.strings */,
 			);
@@ -138,8 +141,9 @@
 				A5A9504D2601CEFD007DFFD4 /* MultilineHstack.swift */,
 				A56712C92603708300667539 /* SearchBar.swift */,
 				A56712CD26038A4B00667539 /* Arrows.swift */,
-				A538141A2618922E00FBC94D /* TopToastMessage.swift */,
+				A538141A2618922E00FBC94D /* ToastMessage.swift */,
 				A52AE6FD26359EC600F595CE /* DistanceCircle.swift */,
+				A56C64262636BC7E00C5AAC9 /* SmallerButtonStyle.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -167,8 +171,10 @@
 		A59698CA25FF883B00A1EAB9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A536B7C725FE385A00CF53F7 /* What_station_is_this.xcdatamodeld */,
 				A59698CB25FF886200A1EAB9 /* StationItem.swift */,
 				A5FD79D12626CEC700B04A77 /* StationGraph.swift */,
+				A56C642F2636FB0A00C5AAC9 /* coreDataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,12 +308,14 @@
 				A5373259261715C700B2A3A3 /* Locator.swift in Sources */,
 				A536B7C925FE385A00CF53F7 /* What_station_is_this.xcdatamodeld in Sources */,
 				A5373261261759FA00B2A3A3 /* LocationFetcher.swift in Sources */,
-				A538141B2618922E00FBC94D /* TopToastMessage.swift in Sources */,
+				A538141B2618922E00FBC94D /* ToastMessage.swift in Sources */,
 				A536B7DF25FE457F00CF53F7 /* StationCard.swift in Sources */,
 				A59698C825FF862B00A1EAB9 /* SearchCard.swift in Sources */,
+				A56C64272636BC7E00C5AAC9 /* SmallerButtonStyle.swift in Sources */,
 				A56712BF2603538500667539 /* SelectPageView.swift in Sources */,
 				A536B7DB25FE3A1400CF53F7 /* CustomText.swift in Sources */,
 				A52AE6FE26359EC600F595CE /* DistanceCircle.swift in Sources */,
+				A56C64302636FB0A00C5AAC9 /* coreDataController.swift in Sources */,
 				A56712CA2603708300667539 /* SearchBar.swift in Sources */,
 				A5A9504E2601CEFD007DFFD4 /* MultilineHstack.swift in Sources */,
 				A56712CE26038A4B00667539 /* Arrows.swift in Sources */,
