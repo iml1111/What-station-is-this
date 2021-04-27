@@ -10,7 +10,13 @@ import ExytePopupView
 
 struct StationTrackingView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var locationFetcher: LocationFetcher
+    
+    @FetchRequest(
+        entity: RecentSelected.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \RecentSelected.date, ascending: false)])
+    private var recentSelectItems: FetchedResults<RecentSelected>
     
     @State var currentStation: StationItem = startStation
     @State var targetStation: StationItem
@@ -66,6 +72,7 @@ struct StationTrackingView: View {
                 self.totalDistance = self.locationFetcher.getDistanceByTargetStation(station: self.currentStation)
                 self.currentDistance = self.totalDistance
                 self.remainedInfo = "\(self.totalDistance)"
+                addRecentSelectedItem(station: self.targetStation)
             }
             .onReceive(timer) { _ in
                 refreshCurrentStatus()
@@ -93,6 +100,30 @@ struct StationTrackingView: View {
         let total: CGFloat = CGFloat(self.totalDistance)
         let cur: CGFloat = CGFloat(self.currentDistance)
         self.remainedPercent = (total - cur) / total
+    }
+    
+    func addRecentSelectedItem(station: StationItem) {
+        
+        // 해당 기록과 같은 name이 존재할 경우, 해당 인덱스 삭제
+        if let target = recentSelectItems.first(where: {$0.name == station.name}) {
+            viewContext.delete(target)
+        }
+        // 최근 기록이 30개를 이상일 경우, 넘은 만큼 오래된 걸 삭제
+        if recentSelectItems.count > 20 {
+            let target2 = recentSelectItems.last!
+            viewContext.delete(target2)
+        }
+        // 새로운 기록 추가
+        let newRecentSelected = RecentSelected(context: viewContext)
+        newRecentSelected.date = Date()
+        newRecentSelected.name = station.name
+        do {
+            try viewContext.save()
+        }
+        catch {
+            let error = error as NSError
+            print("에러 발생: \(error)")
+        }
     }
 }
 

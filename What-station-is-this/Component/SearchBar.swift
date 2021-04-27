@@ -41,7 +41,6 @@ struct SearchBar: View {
             if showCancelButton  {
                 Button("Cancel") {
                         UIApplication.shared.endEditing(true)
-                        self.searchText = ""
                         self.showCancelButton = false
                 }
                 .foregroundColor(Color(.systemBlue))

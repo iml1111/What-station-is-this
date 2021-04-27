@@ -9,9 +9,9 @@ import SwiftUI
 
 struct SelectPageView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(sortDescriptors: [])
+    @FetchRequest(
+        entity: RecentSelected.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \RecentSelected.date, ascending: false)])
     private var recentSelectItems: FetchedResults<RecentSelected>
     
     @State var searchText: String = ""
@@ -50,6 +50,7 @@ struct SelectPageView: View {
                         }
                     }
                 }
+                .resignKeyboardOnDragGesture()
             }
             else {
                 List {
@@ -66,12 +67,18 @@ struct SelectPageView: View {
                         ){
                             SearchCard(station: station)
                         }
+                        
                     }
                 }
+                .resignKeyboardOnDragGesture()
             }
         }
         .navigationBarTitle("도착역 찾아보기")
-        .resignKeyboardOnDragGesture()
+        
+        .onDisappear {
+            self.searchText = ""
+            self.showCancelButton = false
+        }
     }
     
 }

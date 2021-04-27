@@ -28,7 +28,7 @@ struct SearchCard: View {
                 }
                 Spacer()
             }
-        }.padding(3)
+        }.padding(2)
         
     }
 }

@@ -12,7 +12,6 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let DataController = coreDataController.shared
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -27,11 +26,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Appdelegate 전역에 생성된 locationFetcher 할당
         let locationFetcher = (UIApplication.shared.delegate as! AppDelegate).locationFetcher
+        let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         
         let contentView = ContentView()
             .environment(\.managedObjectContext, context)
             .environmentObject(locationFetcher!)
-            .environment(\.managedObjectContext, DataController.container.viewContext)
+            .environment(\.managedObjectContext, persistentContainer.viewContext)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
