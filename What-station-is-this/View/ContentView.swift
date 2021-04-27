@@ -4,15 +4,13 @@
 //
 //  Created by 신희재 on 2021/03/14.
 //
-// - 현재역 표시 버튼 -> 재수정 필요(노선 리사이징, 디자인 배치 등)
-// - 설정 창 ?
 
 import SwiftUI
 //import UserNotifications
 import CoreLocation
 import MapKit
 import ExytePopupView
-// 유의사항: gps 부정확 안내, 수도권 지하철역만 지원, 알림 추후 추가 예정, 실제 최단 거리는 아님
+
 
 struct ContentView: View {
     
@@ -21,6 +19,7 @@ struct ContentView: View {
     @State var currentStationItem = startStation
     
     @State var showingPopup = false
+    @State var showingInfoPopup = false
     
     // 앱 실행 초기 위치 추적기 실행 타이머
     var firstTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
@@ -41,64 +40,59 @@ struct ContentView: View {
                             .padding()
                             .padding(.top, 20)
                         Spacer()
-                        Image(systemName: "tram.fill")
-                            .foregroundColor(.white)
-                            .font(.system(size: 42))
-                        switch locationFetcher.authorizationStatus {
-                        case .authorizedAlways, .authorizedWhenInUse, .restricted:
-                            VStack {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(Color.white)
-                                        .frame(maxWidth: .infinity,
-                                               maxHeight: 23)
-                                    Button(
-                                        action: {
-                                            self.currentStationItem = self.locationFetcher.lastKnownStation
-                                            self.showingPopup = true
-                                        },
-                                        label: {
-                                            StationCard(
-                                                station: $currentStationItem,
-                                                gmWidth: gm.size.width,
-                                                gmHeight: gm.size.height
-                                            )
+                        VStack {
+                            Image("icon")
+                                .foregroundColor(.white)
+                                .font(.system(size: 25))
+                            switch locationFetcher.authorizationStatus {
+                            case .authorizedAlways, .authorizedWhenInUse, .restricted:
+                                VStack {
+                                    ZStack {
+                                        Rectangle()
+                                            .fill(Color.white)
+                                            .frame(maxWidth: .infinity,
+                                                   maxHeight: 23)
+                                        Button(
+                                            action: {
+                                                self.currentStationItem = self.locationFetcher.lastKnownStation
+                                                self.showingPopup = true
+                                            },
+                                            label: {
+                                                StationCard(
+                                                    station: $currentStationItem,
+                                                    gmWidth: gm.size.width,
+                                                    gmHeight: gm.size.height
+                                                )
+                                            }
+                                        ).buttonStyle(SmallerButtonStyle())
+                                    }
+                                    
+                                    NavigationLink(
+                                        destination: SelectPageView()
+                                    ){
+                                        HStack {
+                                            SearchPageButton()
                                         }
-                                    ).buttonStyle(SmallerButtonStyle())
-                                }
-                                
-                                NavigationLink(
-                                    destination: SelectPageView()
-                                ){
-                                    HStack {
-                                        SearchPageButton()
                                     }
                                 }
+                            case .notDetermined:
+                                LocationNotDeterminedLabel()
+                            case .denied:
+                                LocationDeniedLabel()
+                            @unknown default:
+                                EtcLabel(string: "알 수 없는 에러 발생!")
                             }
-                        case .notDetermined:
-                            LocationNotDeterminedLabel()
-                        case .denied:
-                            LocationDeniedLabel()
-                        @unknown default:
-                            EtcLabel(string: "알 수 없는 에러 발생!")
                         }
+                        .padding(.bottom, 74)
                         Spacer()
-                        Spacer()
-                        // 디버깅용 버튼
-//                        Button(
-//                            action: {
-//                                self.locationFetcher.start()
-//                                if let location = self.locationFetcher.lastKnownLocation {
-//                                    let CurrentStationItem = self.locationFetcher.lastKnownStation
-//                                    self.createNotification(location: location, stationName: CurrentStationItem.name)
-//                                } else {
-//                                    self.createNotification2()
-//                                }
-//                            }, label: {
-//                                Text("현재 위치는?")
-//                                    .foregroundColor(.accentColor)
-//                            }
-//                        )
+                        Button(
+                            action: {
+                                self.showingInfoPopup = true
+                            },
+                            label: {AuthorCard(gmWidth: gm.size.width, gmHeight: gm.size.height)
+                                .padding(.bottom, 22)}
+                        ).buttonStyle(SmallerButtonStyle())
+                        
                     }
                 }
                 .navigationBarHidden(true)
@@ -107,10 +101,19 @@ struct ContentView: View {
                     type: .toast,
                     position: .bottom,
                     animation: .spring(),
-                    autohideIn: 1,
+                    autohideIn: 0.7,
                     closeOnTap: true,
                     closeOnTapOutside: true) {
                     WhiteTopToastMessage(string: "현재 역 갱신 완료!")
+                }
+                .popup(
+                    isPresented: $showingInfoPopup,
+                    type: .toast,
+                    position: .top,
+                    animation: .spring(),
+                    closeOnTap: true,
+                    closeOnTapOutside: true) {
+                    InfoPopup()
                 }
             }
         }.onAppear {
@@ -152,6 +155,8 @@ struct ContentView: View {
                 self.currentStationItem = self.locationFetcher.lastKnownStation
             }
         }
+        
+        
     }
     
 //    func createNotification(location: CLLocationCoordinate2D, stationName: String){

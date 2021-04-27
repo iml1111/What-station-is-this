@@ -49,6 +49,15 @@ struct StationTrackingView: View {
                     Rectangle()
                         .fill(Color.accentColor)
                         .frame(maxWidth: .infinity, maxHeight: 22)
+                    HStack {
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.white)
+                            .padding(.leading, 24)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.white)
+                            .padding(.trailing, 24)
+                    }
                     Button(
                         action: {
                             refreshCurrentStatus()
@@ -73,6 +82,9 @@ struct StationTrackingView: View {
                 self.currentDistance = self.totalDistance
                 self.remainedInfo = "\(self.totalDistance)"
                 addRecentSelectedItem(station: self.targetStation)
+                if self.currentStation.name == self.targetStation.name {
+                    self.remainedPercent = 1.0
+                }
             }
             .onReceive(timer) { _ in
                 refreshCurrentStatus()
@@ -108,7 +120,7 @@ struct StationTrackingView: View {
         if let target = recentSelectItems.first(where: {$0.name == station.name}) {
             viewContext.delete(target)
         }
-        // 최근 기록이 30개를 이상일 경우, 넘은 만큼 오래된 걸 삭제
+        // 최근 기록이 20개를 이상일 경우, 넘은 만큼 오래된 걸 삭제
         if recentSelectItems.count > 20 {
             let target2 = recentSelectItems.last!
             viewContext.delete(target2)

@@ -32,7 +32,7 @@ struct StationCard: View {
                 .padding(.horizontal, 20.0)
                 .padding(.vertical, 12.0)
                 .background(Color.white)
-                .cornerRadius(40)
+                .cornerRadius(100)
                 .shadow(
                     color: Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)),
                     radius: 2, x: 0, y: 1
@@ -66,11 +66,11 @@ struct StationBlueCard: View {
         .padding(.horizontal, 10.0)
         .padding(.vertical, 6.0)
         .background(Color.white)
-        .cornerRadius(40)
+        .cornerRadius(100)
         .padding(.horizontal, 6.0)
         .padding(.vertical, 6.0)
         .background(Color.accentColor)
-        .cornerRadius(40)
+        .cornerRadius(100)
         .shadow(
             color: Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)),
             radius: 2, x: 0, y: 1
