@@ -27,7 +27,7 @@ struct StationTrackingView: View {
     @State var currentDistance: Int = 0
     
     @State var showingPopup = false
-    var timer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
+    var timer = Timer.publish(every: 3.0, on: .main, in: .common).autoconnect()
     
     var body: some View {
         GeometryReader { gm in
@@ -89,16 +89,16 @@ struct StationTrackingView: View {
             .onReceive(timer) { _ in
                 refreshCurrentStatus()
             }
-            .popup(
-                isPresented: $showingPopup,
-                type: .toast,
-                position: .bottom,
-                animation: .spring(),
-                autohideIn: 1,
-                closeOnTap: true,
-                closeOnTapOutside: true) {
-                WhiteTopToastMessage(string: "현재 역 갱신 완료!")
-            }
+        }
+        .popup(
+            isPresented: $showingPopup,
+            type: .toast,
+            position: .bottom,
+            animation: .spring(),
+            autohideIn: 1,
+            closeOnTap: true,
+            closeOnTapOutside: true) {
+            WhiteTopToastMessage(string: "현재 역 갱신 완료!")
         }
     }
     

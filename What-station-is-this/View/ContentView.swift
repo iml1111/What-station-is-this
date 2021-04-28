@@ -24,7 +24,7 @@ struct ContentView: View {
     // 앱 실행 초기 위치 추적기 실행 타이머
     var firstTimer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @State var firstTimerCount = 0
-    var permanentTimer = Timer.publish(every: 5.0, on: .main, in: .common).autoconnect()
+    var permanentTimer = Timer.publish(every: 3.0, on: .main, in: .common).autoconnect()
     
     
     var body: some View {
