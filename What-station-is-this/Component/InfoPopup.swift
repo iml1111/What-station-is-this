@@ -34,8 +34,6 @@ struct InfoPopup: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 10)
                     .lineSpacing(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
-                
-                
             
                 Text("Good Bye!")
                     .foregroundColor(.black)
