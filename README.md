@@ -12,7 +12,7 @@
   <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/preview4.png" alt="04.png">
 </div>
 
-
+<br/>
 
 ## ✨ About
 
@@ -26,15 +26,15 @@
 - iOS 14.4+
   <br/>
 
+  <br/>
+
 ## ⚒ Features
 
 
 
 ### Main View
 
-<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft2.png" align="right" width="30%">
-
-<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft1.png" align="right" width="30%">
+<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft1.png" width="30%">
 
 - 앱을 실행하면 바로 가장 가까운 현재역을 확인할 수 있습니다.
 - 역 버튼을 클릭하면, 현재 위치 정보를 갱신시킵니다.
@@ -44,9 +44,7 @@
 
 ### Search View
 
-<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft4.png" align="right" width="30%">
-
-<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft3.png" align="right" width="30%">
+<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft3.png" width="30%">
 
 - 도착역 찾아보기 버튼을 누르면, 검색 페이지에 진입합니다.
 - 기본적으로 자신이 예전에 지정했던 도착역들을 확인할 수 있습니다.
@@ -56,7 +54,7 @@
 
 ### Tracking View
 
-<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft5.png" align="right" width="30%">
+<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft5.png" width="30%">
 
 - 검색 페이지에서 역을 클릭하면 트래킹 화면으로 넘어갑니다.
 - 이 화면에서는 실시간 현재 지하철역과 더불와 도착역과의 대략적인 거리가 표시됩니다.
