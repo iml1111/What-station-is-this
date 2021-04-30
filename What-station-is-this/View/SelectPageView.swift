@@ -60,25 +60,18 @@ struct SelectPageView: View {
                         }
                     ){ station in
                         NavigationLink(
-                            destination:
-                                StationTrackingView(
+                            destination: StationTrackingView(
                                     targetStation: station
                                 )
                         ){
                             SearchCard(station: station)
                         }
-                        
                     }
                 }
                 .resignKeyboardOnDragGesture()
             }
         }
         .navigationBarTitle("도착역 찾아보기")
-        
-        .onDisappear {
-            self.searchText = ""
-            self.showCancelButton = false
-        }
     }
     
 }
