@@ -34,7 +34,10 @@
 
 ### Main View
 
-<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft1.png" width="30%">
+<div display="flex">
+  <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft1.png" alt="01.png">
+  <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft2.png" alt="02.png">
+</div>
 
 - 앱을 실행하면 바로 가장 가까운 현재역을 확인할 수 있습니다.
 - 역 버튼을 클릭하면, 현재 위치 정보를 갱신시킵니다.
@@ -46,7 +49,10 @@
 
 ### Search View
 
-<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft3.png" width="30%">
+<div display="flex">
+  <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft3.png" alt="01.png">
+  <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft4.png" alt="02.png">
+</div>
 
 - 도착역 찾아보기 버튼을 누르면, 검색 페이지에 진입합니다.
 - 기본적으로 자신이 예전에 지정했던 도착역들을 확인할 수 있습니다.
