@@ -1,23 +1,35 @@
-<img align="left" width="120" height="120" src="https://user-images.githubusercontent.com/59433441/108235549-42cb2580-7189-11eb-92af-34d5129624b0.jpg" alt="icon">
+<img align="left" width="120" height="120" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/icon.png" alt="icon">
 
 # 지금 무슨 역이지?
-> 🚇 세상 편한 원클릭 지하철 추적 앱
+> 🚇 **세상 편한 원클릭 지하철 추적 앱**
 > <br/>
 <div display="flex">
-  <img width="180" height="380" src="https://user-images.githubusercontent.com/59433441/108804046-94d3d700-75df-11eb-82a5-6b37c488630a.png" alt="01.png">
-  <img width="180" height="380" src="https://user-images.githubusercontent.com/59433441/108804165-d6fd1880-75df-11eb-9b68-28bfe65e5864.png" alt="02.png">
-  <img width="180" height="380" src="https://user-images.githubusercontent.com/59433441/108805951-b8991c00-75e3-11eb-8736-59c1d355f713.png" alt="03.png">
-  <img width="180" height="380" src="https://user-images.githubusercontent.com/59433441/108805989-d36b9080-75e3-11eb-96b4-2c1557742e82.png" alt="04.png">
+  <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/preview1.png" alt="01.png">
+  <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/preview2.png" alt="02.png">
+  <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/preview3.png" alt="03.png">
+  <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/preview4.png" alt="04.png">
 </div>
+
 
 
 ## ✨ About
 ### Develop Environment
-- Xcode 12.4
+- Xcode 12.5
 - Swift 5.0
 ### iOS Deployment Target
-- iOS 13.0+
+- iOS 14.4+
 <br/>
 
 ## ⚒ Features
+
+<img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft1.png" align="right" width="30%">
+
+<h3>Main View</h3>
+<ul>
+  <li>앱을 실행하면 바로 가장 가까운 현재역을 확인할 수 있습니다.</li>
+  <li>역 버튼을 클릭하면, 현재 위치 정보를 갱신시킵니다.</li>
+  <li>하단의 "By. IML"을 클릭하면 앱의 유의사항을 확인할 수 있습니다.</li>
+</ul>
+
+### Search View
 
