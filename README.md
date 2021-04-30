@@ -35,6 +35,7 @@
   <li>하단의 "By. IML"을 클릭하면 앱의 유의사항을 확인할 수 있습니다.</li>
 </ul>
 
+<br/><br/><br/><br/><br/><br/>
 <img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft4.png" align="right" width="30%">
 
 <img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft3.png" align="right" width="30%">
@@ -47,6 +48,8 @@
   <li>기본적으로 자신이 예전에 지정했던 도착역들을 확인할 수 있습니다.</li>
   <li>상단의 검색바를 클릭하여, 원하는 도착역을 검색해볼 수 있어요!</li>
 </ul>
+
+<br/><br/><br/><br/><br/><br/>
 
 <img src="https://github.com/iml1111/What-station-is-this/blob/main/docs/ft5.png" align="right" width="30%">
 
