@@ -12,6 +12,19 @@
   <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/preview3.png" alt="03.png">
   <img width="180" height="380" src="https://github.com/iml1111/What-station-is-this/blob/main/docs/preview4.png" alt="04.png">
 </div>
+<br/>
+
+## Overview
+
+**먼저 해당 앱의 디자인을 도와주신 [@NB](https://github.com/altmshfkgudtjr)님께 감사의 말씀을 전합니다!**
+
+다들, 지하철을 타고 갈때 이런 생각한 적 없으신가요?
+"지금 무슨 역이지?"
+
+그래서 등장한 세상 편한 지하철 위치 추적 앱, 지무역입니다!
+
+- 현재 가장 가까운 지하철역을 알려줍니다.
+-  도착역을 지정하면 현재 역과 도착역간의 거리를 실시간으로 계산해줍니다.
 
 <br/>
 
