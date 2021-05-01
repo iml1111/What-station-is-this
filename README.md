@@ -2,7 +2,8 @@
 
 # 지금 무슨 역이지?
 
-> 🚇 **세상 편한 원클릭 지하철 추적 앱**
+> 🚇 [**세상 편한 원클릭 지하철 추적 앱**](https://apps.apple.com/kr/app/%EC%A7%80%EB%AC%B4%EC%97%AD-%EC%A7%80%EA%B8%88-%EB%AC%B4%EC%8A%A8-%EC%97%AD%EC%9D%B4%EC%A7%80/id1565144758)
+>
 > <br/>
 
 <div display="flex">
@@ -14,14 +15,10 @@
 
 <br/>
 
-## ✨ About
-
-### Develop Environment
+## Dependency
 
 - Xcode 12.5
 - Swift 5.0
-
-### iOS Deployment Target
 
 - iOS 14.4+
   <br/>
