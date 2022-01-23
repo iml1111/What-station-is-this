@@ -17,6 +17,7 @@ struct SearchCard: View {
                 Text(station.name)
                     .font(.title2)
                     .bold()
+                    .foregroundColor(.black)
                 Spacer()
             }
             HStack {
